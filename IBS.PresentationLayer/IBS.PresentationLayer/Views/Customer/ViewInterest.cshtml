@@ -1,0 +1,47 @@
+﻿@model IBS.EntitiesLayer.Models.Account
+
+
+
+<hr />
+<h4>Interest Amount </h4>
+<hr />
+<h2 class="text-center">Your Interest amount is : @Model.InterestAmount</h2>
+
+@if (Model.InterestAmount == 0)
+{
+    <div class="row" style="margin:20px;">
+        <div class="col-md-3 offset-md-3">
+            <a asp-action="AddInterest" asp-route-accno="@ViewBag.accno" role="button" class="btn btn-outline-primary disabled">
+                <img src="~/images/addinterest.png" alt="image" height="150" width="150">
+                <h6>Add Interest To You Account Balance</h6>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a asp-action="WithdrawInterest" asp-route-accno="@ViewBag.accno" role="button" class="btn btn-outline-primary disabled">
+                <img src="~/images/withdrawinterest.png" alt="image" height="150" width="150">
+                <h6>Withdraw Interest Amount as Cash</h6>
+            </a>
+        </div>
+    </div>
+    <br />
+}
+else
+{
+    <div class="row" style="margin:20px;">
+        <div class="col-md-3 offset-md-3">
+            <a asp-action="AddInterest" asp-route-accno="@ViewBag.accno" role="button" class="btn btn-outline-primary">
+                <img src="~/images/addinterest.png" alt="image" height="150" width="150">
+                <h6>Add Interest To You Account Balance</h6>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a asp-action="WithdrawInterest" asp-route-accno="@ViewBag.accno" role="button" class="btn btn-outline-primary">
+                <img src="~/images/withdrawinterest.png" alt="image" height="150" width="150">
+                <h6>Withdraw Interest Amount as Cash</h6>
+            </a>
+        </div>
+    </div>
+    <br />
+}
+
+

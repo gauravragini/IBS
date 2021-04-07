@@ -1,0 +1,46 @@
+﻿@model IBS.EntitiesLayer.Models.Account
+
+
+
+<hr />
+        <h4>Account</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AccountNumber)
+               
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AccountNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AccountType)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AccountType)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AvailableBalance)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AvailableBalance)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.InterestAmount)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.InterestAmount)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AccountCreationTime)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AccountCreationTime)
+            </dd>
+            @*<dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.UserId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.UserId)
+            </dd>*@
+        </dl>

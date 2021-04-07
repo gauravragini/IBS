@@ -1,0 +1,9 @@
+C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.Exceptions\bin\Debug\netcoreapp3.1\IBS.Exceptions.deps.json
+C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.Exceptions\bin\Debug\netcoreapp3.1\IBS.Exceptions.dll
+C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.Exceptions\bin\Debug\netcoreapp3.1\IBS.Exceptions.pdb
+C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.Exceptions\obj\Debug\netcoreapp3.1\IBS.Exceptions.csprojAssemblyReference.cache
+C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.Exceptions\obj\Debug\netcoreapp3.1\IBS.Exceptions.AssemblyInfoInputs.cache
+C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.Exceptions\obj\Debug\netcoreapp3.1\IBS.Exceptions.AssemblyInfo.cs
+C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.Exceptions\obj\Debug\netcoreapp3.1\IBS.Exceptions.csproj.CoreCompileInputs.cache
+C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.Exceptions\obj\Debug\netcoreapp3.1\IBS.Exceptions.dll
+C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.Exceptions\obj\Debug\netcoreapp3.1\IBS.Exceptions.pdb

@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\images\account.png" />
+    <Content Remove="wwwroot\images\addinterest.png" />
+    <Content Remove="wwwroot\images\deposit.png" />
+    <Content Remove="wwwroot\images\interest.png" />
+    <Content Remove="wwwroot\images\logo.jpg" />
+    <Content Remove="wwwroot\images\logout.png" />
+    <Content Remove="wwwroot\images\transaction.png" />
+    <Content Remove="wwwroot\images\transfer.png" />
+    <Content Remove="wwwroot\images\withdraw.png" />
+    <Content Remove="wwwroot\images\withdrawinterest.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\account.png" />
+    <None Include="wwwroot\images\addinterest.png" />
+    <None Include="wwwroot\images\deposit.png" />
+    <None Include="wwwroot\images\interest.png" />
+    <None Include="wwwroot\images\logo.jpg" />
+    <None Include="wwwroot\images\logout.png" />
+    <None Include="wwwroot\images\transaction.png" />
+    <None Include="wwwroot\images\transfer.png" />
+    <None Include="wwwroot\images\withdraw.png" />
+    <None Include="wwwroot\images\withdrawinterest.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IBS.EntitiesLayer\IBS.EntitiesLayer.csproj" />
+  </ItemGroup>
+
+</Project>
