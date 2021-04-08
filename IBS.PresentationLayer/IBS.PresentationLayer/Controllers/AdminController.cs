@@ -7,26 +7,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using IBS.EntitiesLayer;
 
 namespace IBS.PresentationLayer.Controllers
 {
   
     public class AdminController : Controller
     {
-        const string SessionName = "accno";
-        IBSAPI api = new IBSAPI();
+        //const string SessionName = "accno";
+        //IBSAPI api = new IBSAPI();
+       
 
+        //public IActionResult allUserAccounts()
+        //{
+        //    var results = _cc.Accounts.ToList();
+        //    return View(results);
+        //}
         public IActionResult Index()
         {
             return View();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> ViewNewCustomers()
-        {
-          
-           
-        }
+    
+
 
     }
 }

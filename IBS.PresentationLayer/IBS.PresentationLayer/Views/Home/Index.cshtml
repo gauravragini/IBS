@@ -1,8 +1,89 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IBS.EntitiesLayer.Models.Login
+
+@{
+    ViewData["Title"] = "HomePage";
 }
 
-<a href="~/Authentication/RegisterAdmin"><p>Register as Admin</p></a>
-<a href="~/Authentication/RegisterCustomer"><p>Register as Customer</p></a>
-<a href="~/Authentication/Login"><p>Login</p></a>
+
+<hr />
+<div class="container-fluid  ">
+
+
+    <nav class="navbar navbar-expand-sm navbar-light bg-white">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 ">
+            <a class="navbar-brand" href="#">
+                <img src="~/images/logo.jpg" alt="logo" height="150" width="230">
+            </a>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bnn">
+            Internet Banking Solutions
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse w-100 order-3" id="bnn">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> Whats New  |  </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> About Online IBS  |  </a>
+                </li>
+
+
+            </ul>
+        </div>
+    </nav>
+    </div>
+
+
+    <div class="row bg-light  align-items-center" style="height:50px">
+        <div class="col-md-3"><span id="time"></span></div>
+        <div class="col-md-6"><marquee style="color:red">Online Internet Banking Solutions Launches a new feature to Update Password.</marquee></div>
+    </div>
+<hr />
+<hr />
+
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Login">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label"></label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-row">
+                    <div class="col-4">
+                        <input type="submit" value="Login" class="btn btn-primary" />
+                    </div>
+                    <div class="form-row">
+                        <input type="submit" value="Reset" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-2">
+
+        </div>
+
+        <div class="col-md-4">
+            <label>New User ?</label>
+            <hr />
+            <a href="Authentication/RegisterAdmin">Register For Admin</a>
+            <br />
+            <a href="Authentication/RegisterCustomer">Register For Customer</a>
+        </div>
+    </div>
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
 

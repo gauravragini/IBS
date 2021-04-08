@@ -19,7 +19,7 @@ namespace IBS.WEBAPI.Controllers
     public class AuthenticationController : ControllerBase
     {
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly RoleManager<IdentityRole> roleManager;
+        private readonly RoleManager<IdentityRole> roleManager;  
         private readonly IConfiguration _configuration;
 
         private ApplicationDbContext db;

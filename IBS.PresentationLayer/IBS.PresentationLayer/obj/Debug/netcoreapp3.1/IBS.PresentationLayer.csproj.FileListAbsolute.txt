@@ -145,7 +145,6 @@ C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.PresentationLayer\obj\Debu
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.PresentationLayer\obj\Debug\netcoreapp3.1\IBS.PresentationLayer.TagHelpers.input.cache
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.PresentationLayer\obj\Debug\netcoreapp3.1\IBS.PresentationLayer.TagHelpers.output.cache
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.PresentationLayer\obj\Debug\netcoreapp3.1\IBS.PresentationLayer.RazorCoreGenerate.cache
-C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.PresentationLayer\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.PresentationLayer\obj\Debug\netcoreapp3.1\Razor\Views\Authentication\Login.cshtml.g.cs
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.PresentationLayer\obj\Debug\netcoreapp3.1\Razor\Views\Authentication\RegisterAdmin.cshtml.g.cs
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.PresentationLayer\obj\Debug\netcoreapp3.1\Razor\Views\Authentication\RegisterCustomer.cshtml.g.cs
@@ -173,3 +172,5 @@ C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.PresentationLayer\obj\Debu
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.PresentationLayer\obj\Debug\netcoreapp3.1\Razor\Views\Customer\_LayoutCustomer.cshtml.g.cs
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.PresentationLayer\obj\Debug\netcoreapp3.1\Razor\Views\Customer\_ViewImports.cshtml.g.cs
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.PresentationLayer\obj\Debug\netcoreapp3.1\Razor\Views\Customer\_ViewStart.cshtml.g.cs
+C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.PresentationLayer\obj\Debug\netcoreapp3.1\Razor\Views\Home\_LayoutHome.cshtml.g.cs
+C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.PresentationLayer\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
