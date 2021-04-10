@@ -23,5 +23,11 @@ namespace IBS.Exceptions
             public AccountDoesNotExistException() : base() { }
             public AccountDoesNotExistException(string message) : base(message) { }
         }
+
+        public class InterestException : Exception
+        {
+            public InterestException() : base() { }
+            public InterestException(string message) : base(message) { }
+        }
     }
 }

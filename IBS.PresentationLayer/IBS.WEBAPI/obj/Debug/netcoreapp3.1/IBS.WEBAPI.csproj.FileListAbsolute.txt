@@ -6,6 +6,7 @@ C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\bin\Debug\netcoreap
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\bin\Debug\netcoreapp3.1\IBS.WEBAPI.runtimeconfig.dev.json
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\bin\Debug\netcoreapp3.1\IBS.WEBAPI.dll
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\bin\Debug\netcoreapp3.1\IBS.WEBAPI.pdb
+C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\bin\Debug\netcoreapp3.1\Humanizer.dll
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
@@ -14,6 +15,7 @@ C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\bin\Debug\netcoreap
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
@@ -75,5 +77,3 @@ C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\obj\Debug\netcoreap
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\obj\Debug\netcoreapp3.1\IBS.WEBAPI.dll
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\obj\Debug\netcoreapp3.1\IBS.WEBAPI.pdb
 C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\obj\Debug\netcoreapp3.1\IBS.WEBAPI.genruntimeconfig.cache
-C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\bin\Debug\netcoreapp3.1\Humanizer.dll
-C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\IBS.WEBAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll

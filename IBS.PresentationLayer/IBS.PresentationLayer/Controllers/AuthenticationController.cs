@@ -16,6 +16,7 @@ namespace IBS.PresentationLayer.Controllers
 
         public IActionResult Index()
         {
+            @ViewData["message"] = TempData["message"];
             return View();
         }
 
@@ -57,6 +58,7 @@ namespace IBS.PresentationLayer.Controllers
         [HttpPost]
         public IActionResult RegisterAdmin(RegisterAdmin model)
         {
+           
             Response cont;
             using (var client = new HttpClient())
             {
@@ -70,7 +72,9 @@ namespace IBS.PresentationLayer.Controllers
 
                 var res = result.Content.ReadAsStringAsync().Result;
                 cont = JsonConvert.DeserializeObject<Response>(res);
-                return Content(cont.Message);
+                TempData["message"] = cont.Message;
+                return RedirectToAction("Index");
+              //  return Content(cont.Message);
 
 
             }

@@ -112,16 +112,16 @@ namespace IBS.WEBAPI.Controllers
             if (!result.Succeeded)
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = $"{result.Errors.ToList()[0].Code}", Message = $"{result.Errors.ToList()[0].Description}" });
 
-            if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
-                await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
+            //if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
+            //    await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
 
-            if (!await roleManager.RoleExistsAsync(UserRoles.User))
-                await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+            //if (!await roleManager.RoleExistsAsync(UserRoles.User))
+            //    await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
 
-            if (await roleManager.RoleExistsAsync(UserRoles.Admin))
-            {
-                await userManager.AddToRolesAsync(user, new List<string>() { UserRoles.Admin });
-            }
+            //if (await roleManager.RoleExistsAsync(UserRoles.Admin))
+            //{
+            //    await userManager.AddToRolesAsync(user, new List<string>() { UserRoles.Admin });
+            //}
 
             return Ok(new Response { Status = "Success", Message = "User Created Successfully" });
         }

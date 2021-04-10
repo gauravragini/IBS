@@ -82,7 +82,7 @@ namespace IBS.PresentationLayer
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Admin}/{action=Index}/{id?}");
+                    pattern: "{controller=Authentication}/{action=Index}/{id?}");
             });
         }
     }
