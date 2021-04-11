@@ -17,6 +17,7 @@ namespace IBS.EntitiesLayer.Models
         public string username { get; set; }
         public string userstatus { get; set; }
 
+        public string token { get; set; }
 
     }
 }

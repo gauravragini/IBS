@@ -51,31 +51,8 @@ namespace IBS.WEBAPI
 
             //For Identity
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
-
-            //// Adding Authentication
-            //services.AddAuthentication(option =>
-            //{
-            //    option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            //    option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            //    option.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            //})
-
-            //// Adding Jwt Bearer
-            //.AddJwtBearer(options =>
-            //{
-            //    options.SaveToken = true;
-            //    options.RequireHttpsMetadata = false;
-            //    options.TokenValidationParameters = new TokenValidationParameters()
-            //    {
-            //        ValidateIssuer = true,
-            //        ValidateAudience = true,
-            //        ValidAudience = Configuration["JWT:ValidAudience"],
-            //        ValidIssuer = Configuration["JWT:ValidIssuer"],
-            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["JWT:Secret"]))
-            //    };
-            //});
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+               // .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -88,7 +65,7 @@ namespace IBS.WEBAPI
 
             app.UseRouting();
 
-             app.UseAuthentication();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

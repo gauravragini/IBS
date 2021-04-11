@@ -9,14 +9,20 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using IBS.EntitiesLayer;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
+using System.Net.Http.Headers;
 
 namespace IBS.PresentationLayer.Controllers
-{ 
+{
+   
     public class AdminController : Controller
     {   
         public IActionResult Index()
         {
-            return View();
+            if (HttpContext.Session.GetString("JWToken") != null)
+                return View();
+            else
+                return Content("Not Authorized");
         }
 
         //Action method to get the list of newly registered customers

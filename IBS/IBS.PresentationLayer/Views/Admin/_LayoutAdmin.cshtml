@@ -27,56 +27,56 @@
 
     <div class="container-fluid  ">
 
+       
+            <nav class="navbar navbar-expand-sm navbar-light bg-white">
+                <div class="navbar-collapse collapse w-100 order-1 order-md-0 ">
+                    <a class="navbar-brand" href="#">
+                        <img src="~/images/logo.jpg" alt="logo" height="150" width="230">
+                    </a>
+                </div>
 
-        <nav class="navbar navbar-expand-sm navbar-light bg-white">
-            <div class="navbar-collapse collapse w-100 order-1 order-md-0 ">
-                <a class="navbar-brand" href="#">
-                    <img src="~/images/logo.jpg" alt="logo" height="150" width="230">
-                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bnn">
+                    Internet Banking Solutions
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse w-100 order-3" id="bnn">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"> Whats New  |  </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"> About Online IBS  |  </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="LogOut" asp-controller="Authentication"> Logout <img src="~/images/logout.png" alt="logo" height="30" width="30"></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+
+            <div class="row bg-light  align-items-center" style="height:50px">
+                <div class="col-md-3"><span id="time"></span></div>
+                <div class="col-md-6"><marquee style="color:red">Online Internet Banking Solutions Launches a new feature to Update Password.</marquee></div>
+                <div class="col-md-3"><span>Welcome  @Context.Session.GetString("name")  </span></div>
+                @Context.Session.GetString("JWToken")
             </div>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bnn">
-                Internet Banking Solutions
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="navbar-collapse collapse w-100 order-3" id="bnn">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"> Whats New  |  </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"> About Online IBS  |  </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" asp-action="Logout" asp-controller="Authentication"> Logout <img src="~/images/logout.png" alt="logo" height="30" width="30"></a>
-                    </li>
-                </ul>
+            <div class="row">
+                <div class="col-md-2 log" style="background-color: lightpink"> <a asp-action="Index"><p>My Profile</p></a></div>
+                <div class="col-md-2 log" style="background-color:lemonchiffon"> <a asp-action="GetNewCustomers"><p> View newly Registered Users</p></a></div>
+                <div class="col-md-2 log" style="background-color:lemonchiffon"> <a asp-action="CalculateInterest" asp-route-ID="@Context.Session.GetString("userid")"><p>Calculate Interest</p></a></div>
+                <div class="col-md-2 log" style="background-color:lightgrey"> <a asp-action="GetAllAccounts"><p>View All Account Details</p></a></div>
+                <div class="col-md-2 log" style="background-color:lightcyan"> <a asp-action="GetAllTransactions"><p>View All Transactions</p></a></div>
             </div>
-        </nav>
 
-
-        <div class="row bg-light  align-items-center" style="height:50px">
-            <div class="col-md-3"><span id="time"></span></div>
-            <div class="col-md-6"><marquee style="color:red">Online Internet Banking Solutions Launches a new feature to Update Password.</marquee></div>
-            <div class="col-md-3"><span>Welcome  @Context.Session.GetString("name")  </span></div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-2 log" style="background-color: lightpink"> <a asp-action="Index"><p>My Profile</p></a></div>
-            <div class="col-md-2 log" style="background-color:lemonchiffon"> <a asp-action="GetNewCustomers" ><p> View newly Registered Users</p></a></div>
-            <div class="col-md-2 log" style="background-color:lemonchiffon"> <a asp-action="CalculateInterest" asp-route-ID="@Context.Session.GetString("userid")"><p>Calculate Interest</p></a></div>
-            <div class="col-md-2 log" style="background-color:lightgrey"> <a asp-action="GetAllAccounts"><p>View All Account Details</p></a></div>
-            <div class="col-md-2 log" style="background-color:lightcyan"> <a asp-action="GetAllTransactions"><p>View All Transactions</p></a></div>
-        </div>
-
-        <div>
-            @RenderBody()
-        </div>
-
-
+            <div>
+                @RenderBody()
+            </div>
+     
 
         <div class="row bg-secondary" style="height:30px">
             <div class="col-md-8"></div>
@@ -96,6 +96,7 @@
 
 
     </div>
+        
 
     <script>
         var display = setInterval(function () { Time() }, 0);
@@ -107,7 +108,7 @@
         }
     </script>
 
-    >
+    
 
 </body>
 

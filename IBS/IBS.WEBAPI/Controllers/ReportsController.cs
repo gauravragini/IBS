@@ -1,5 +1,6 @@
 ﻿using IBS.BussinessLogicLayer.Interfaces;
 using IBS.EntitiesLayer.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -35,7 +36,6 @@ namespace IBS.WEBAPI.Controllers
             //    return StatusCode(StatusCodes.Status500InternalServerError, "internal server error");
             //}
         }
-
 
         //web api to get the list of all the accounts 
         [HttpGet]

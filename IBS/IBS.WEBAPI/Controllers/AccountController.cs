@@ -15,21 +15,21 @@ using System.Threading.Tasks;
 
 namespace IBS.WEBAPI.Controllers
 {
+
+
     [Route("api/[controller]/[action]")]
     [ApiController]
+
+
     public class AccountController : ControllerBase
     {
         private readonly UserManager<ApplicationUser> userManager;
-        //private SignInManager<IdentityUser> signinManager;
         private readonly IConfiguration _configuration;
         private ApplicationDbContext db;
-
         private IAccountBL accountbussinessLayer;
-
-        public AccountController(UserManager<ApplicationUser> userManager, /*SignInManager<IdentityUser> signinManager,*/ IConfiguration configuration, ApplicationDbContext d, IAccountBL accountbussinessLayer)
+        public AccountController(UserManager<ApplicationUser> userManager, IConfiguration configuration, ApplicationDbContext d, IAccountBL accountbussinessLayer)
         {
             this.userManager = userManager;
-            //  this.signinManager = signinManager;
             _configuration = configuration;
             this.db = d;
             this.accountbussinessLayer = accountbussinessLayer;
@@ -79,9 +79,6 @@ namespace IBS.WEBAPI.Controllers
                 db.Accounts.Add(account);
                 db.SaveChanges();
 
-
-
-
                 //if (model.NomineeName != "" || model.NomineeName != null)
                 //{
                 //    Nominee nominee = new Nominee();
@@ -100,7 +97,6 @@ namespace IBS.WEBAPI.Controllers
             }
 
         }
-
 
 
         [HttpPost]
@@ -139,8 +135,23 @@ namespace IBS.WEBAPI.Controllers
             var user = await userManager.FindByNameAsync(model.UserName);
             if (user != null && await userManager.CheckPasswordAsync(user, model.Password))
             {
+                var authClaims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name,user.UserName),
+                    new Claim("Name", user.FirstName + " " + user.LastName),
+                    new Claim("ID", user.Id)
+                };
+                var authSigninKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_configuration["JWT:Secret"]));
+                var token = new JwtSecurityToken(
+                    issuer: _configuration["JWT:ValidIssuer"],
+                    audience: _configuration["JWT:ValidAudience"],
+                    expires: DateTime.Now.AddHours(5),
+                    claims: authClaims,
+                    signingCredentials: new SigningCredentials(authSigninKey, SecurityAlgorithms.HmacSha256Signature)
+                    );
                 return Ok(new Response
                 {
+                    token = new JwtSecurityTokenHandler().WriteToken(token),
                     Status = "success",
                     Message = "Logged In",
                     FirstName = user.FirstName,
@@ -152,14 +163,6 @@ namespace IBS.WEBAPI.Controllers
             }
             return StatusCode(StatusCodes.Status404NotFound, new Response { Status = "Fail", Message = "Incorrect Credentials" });
         }
-
-
-        //public async Task<IActionResult> Logout()
-        //{
-        //    await signinManager.SignOutAsync();
-        //    return RedirectToAction("Index", "Authentication");
-        //}
-
 
 
         //web api action method to accept the customer application
@@ -179,12 +182,14 @@ namespace IBS.WEBAPI.Controllers
         //web api action method to reject the customer application
         [HttpGet("{username:regex(\\w)}")]
         public async Task<IActionResult> RejectCustomer(string username)
-        {   var user = await userManager.FindByNameAsync(username);
+        {
+            var user = await userManager.FindByNameAsync(username);
             var result = await userManager.DeleteAsync(user);
             if (!result.Succeeded)
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Fail", Message = "Some error occurred" });
 
             return Ok(new Response { Status = "Success", Message = "Customer Rejected" });
         }
+
     }
 }

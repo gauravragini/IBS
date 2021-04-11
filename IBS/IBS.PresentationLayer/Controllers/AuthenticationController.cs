@@ -20,7 +20,6 @@ namespace IBS.PresentationLayer.Controllers
         public IActionResult Index()
         {
             @ViewData["message"] = TempData["message"];
-            @ViewData["registrationid"] = TempData["userid"];
             return View();
         }
 
@@ -107,6 +106,7 @@ namespace IBS.PresentationLayer.Controllers
 
                     if (response.IsSuccessStatusCode)
                     {
+                        HttpContext.Session.SetString("JWToken", content.token);
                         if (content.userstatus == "admin")
                         {
                             HttpContext.Session.SetString(sessionUserid, content.userid);
@@ -143,6 +143,13 @@ namespace IBS.PresentationLayer.Controllers
             }
 
            
+        }
+
+
+        public IActionResult LogOut()
+        {
+            HttpContext.Session.Clear();
+            return Redirect("~/Authentication/Index");
         }
 
     }
