@@ -1,4 +1,0 @@
-C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\test\obj\Debug\netcoreapp3.1\test.csprojAssemblyReference.cache
-C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\test\obj\Debug\netcoreapp3.1\test.AssemblyInfoInputs.cache
-C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\test\obj\Debug\netcoreapp3.1\test.AssemblyInfo.cs
-C:\Users\Ragini\Desktop\IBS\IBS.PresentationLayer\test\obj\Debug\netcoreapp3.1\test.csproj.CoreCompileInputs.cache

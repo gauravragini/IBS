@@ -1,0 +1,134 @@
+﻿@model IBS.EntitiesLayer.Models.RegisterCustomer
+
+@{
+    ViewData["Title"] = "RegisterCustomer";
+    Layout = "~/Views/Authentication/_LayoutHome.cshtml";
+
+}
+<h3>Registration for Customers</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="RegisterCustomer">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dob" class="control-label"></label>
+                <input asp-for="Dob" class="form-control" />
+                <span asp-validation-for="Dob" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <input asp-for="Gender" class="form-control" />
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FathersName" class="control-label"></label>
+                <input asp-for="FathersName" class="form-control" />
+                <span asp-validation-for="FathersName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MothersName" class="control-label"></label>
+                <input asp-for="MothersName" class="form-control" />
+                <span asp-validation-for="MothersName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pincode" class="control-label"></label>
+                <input asp-for="Pincode" class="form-control" />
+                <span asp-validation-for="Pincode" class="text-danger"></span>
+            </div>
+
+
+            @*<button onclick="nomineeform()">Add Nominee Details</button>*@
+
+            <div id="nominee">
+                <div class="form-group">
+                    <label asp-for="NomineeName" class="control-label"></label>
+                    <input asp-for="NomineeName" class="form-control" />
+                    <span asp-validation-for="NomineeName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NomineeRelation" class="control-label"></label>
+                    <input asp-for="NomineeRelation" class="form-control" />
+                    <span asp-validation-for="NomineeRelation" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NomineeAge" class="control-label"></label>
+                    <input asp-for="NomineeAge" class="form-control" />
+                    <span asp-validation-for="NomineeAge" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NomineeGender" class="control-label"></label>
+                    <input asp-for="NomineeGender" class="form-control" />
+                    <span asp-validation-for="NomineeGender" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NomineeMobileNumber" class="control-label"></label>
+                    <input asp-for="NomineeMobileNumber" class="form-control" />
+                    <span asp-validation-for="NomineeMobileNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NomineeAddress" class="control-label"></label>
+                    <input asp-for="NomineeAddress" class="form-control" />
+                    <span asp-validation-for="NomineeAddress" class="text-danger"></span>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label asp-for="AccountType" class="control-label"></label>
+                <input asp-for="AccountType" class="form-control" />
+                <span asp-validation-for="AccountType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+@*<script>
+    function nomineeform() {
+        var x = document.getElementById("nominee");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>*@

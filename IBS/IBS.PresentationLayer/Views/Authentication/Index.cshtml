@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Authentication/_LayoutHome.cshtml";
+}
+
+@model IBS.EntitiesLayer.Models.Login
+
+
+@{ ViewData["Title"] = "Home Page"; }
+
+
+@ViewData["message"]
+<div class="row bg-light  align-items-center" style="height:50px">
+    <div class="col-md-3"><span id="time"></span></div>
+    <div class="col-md-6"><marquee style="color:red">Online Internet Banking Solutions Launches a new feature to Update Password.</marquee></div>
+    <div class="col-md-3"><span>Welcome  @ViewBag.accno </span></div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="col-4"></div>
+    <div class="col-4">
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+
+        <a href="~/Authentication/RegisterAdmin"><p>Register as Admin</p></a>
+        <a href="~/Authentication/RegisterCustomer"><p>Register as Customer</p></a>
+        <a href="~/Authentication/Login"><p>Login</p></a>
+        <button type="button" class="btn btn-default" aria-label="Left Align">
+            <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+        </button>
+
+    </div>
+</div>
+
