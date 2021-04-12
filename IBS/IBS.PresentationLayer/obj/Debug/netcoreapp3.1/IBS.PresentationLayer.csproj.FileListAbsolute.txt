@@ -361,3 +361,4 @@ C:\Users\Ragini\Desktop\IBS\IBS\IBS.PresentationLayer\obj\Debug\netcoreapp3.1\IB
 C:\Users\Ragini\Desktop\IBS\IBS\IBS.PresentationLayer\obj\Debug\netcoreapp3.1\Razor\Views\Customer\error.cshtml.g.cs
 C:\Users\Ragini\Desktop\IBS\IBS\IBS.PresentationLayer\obj\Debug\netcoreapp3.1\Razor\Views\Account\Index.cshtml.g.cs
 C:\Users\Ragini\Desktop\IBS\IBS\IBS.PresentationLayer\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
+C:\Users\Ragini\Desktop\IBS\IBS\IBS.PresentationLayer\obj\Debug\netcoreapp3.1\Razor\Views\Customer\UpdatePassword.cshtml.g.cs

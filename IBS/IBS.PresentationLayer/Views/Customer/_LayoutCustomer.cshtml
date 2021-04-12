@@ -73,28 +73,28 @@
             <div class="col-md-2 log" style="background-color:lightgrey"> <a asp-action="ViewInterest" asp-route-accountNumber="@Context.Session.GetString("accountNumber")"><img src="~/images/interest.png" alt="image" height="70" width="70"><p>IntrestAmount</p></a></div>
             <div class="col-md-2 log" style="background-color:lightcyan"> <a asp-action="ViewTransactions" asp-route-accountNumber="@Context.Session.GetString("accountNumber")"><img src="~/images/transaction.png" alt="image" height="70" width="70"><p>My Transactions</p></a></div>
         </div>
-
-        <div>
-            @RenderBody()
-        </div>
-
-
-
-        <div class="row bg-secondary" style="height:30px">
-            <div class="col-md-8"></div>
-            <div class="col-md-4">
-                <a class="flink" href="#" style="color:white"> Privacy&nbsp;  | &nbsp;  </a>
-                <a class="flink" href="#" style="color:white"> Terms&nbsp;   | &nbsp;  </a>
-                <a class="flink" href="#" style="color:white"> Disclosure&nbsp;  |&nbsp;  </a>
-                <a class="flink" href="#" style="color:white"> SiteMap </a>
+        <a asp-action="UpdatePassword">Update Password</a>
+            <div>
+                @RenderBody()
             </div>
-        </div>
 
 
-        <div class="row bg-dark" style="height:30px">
-            <div class="col-md-3"><span style="color:white"> &copy; Internet Banking Solutions</span></div>
-            <div class="col-md-9"></div>
-        </div>
+
+            <div class="row bg-secondary" style="height:30px">
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                    <a class="flink" href="#" style="color:white"> Privacy&nbsp;  | &nbsp;  </a>
+                    <a class="flink" href="#" style="color:white"> Terms&nbsp;   | &nbsp;  </a>
+                    <a class="flink" href="#" style="color:white"> Disclosure&nbsp;  |&nbsp;  </a>
+                    <a class="flink" href="#" style="color:white"> SiteMap </a>
+                </div>
+            </div>
+
+
+            <div class="row bg-dark" style="height:30px">
+                <div class="col-md-3"><span style="color:white"> &copy; Internet Banking Solutions</span></div>
+                <div class="col-md-9"></div>
+            </div>
 
 
     </div>

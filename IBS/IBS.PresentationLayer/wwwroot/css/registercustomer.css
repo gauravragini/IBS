@@ -1,0 +1,221 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.content {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background: url(../images/background.jpg) no-repeat center fixed;
+    background-size: cover;
+    background-position: center;
+    padding: 4px 7px 2px 4px;
+}
+
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+
+
+input[type=text] {
+    font-family: 'poppins',sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    outline: none;
+    /*padding: 12px 20px 12px 40px;*/
+    padding: 10px;
+}
+
+label {
+    /*position: center;*/
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+    color: white;
+    padding: 8px;
+    font-family: serif,'Times New Roman';
+    font-size: 20px;
+    letter-spacing: 1px;
+    width: 42%;
+    display: table-cell;
+    /* width: 1px;*/
+    /*white-space: nowrap;*/
+}
+
+
+input[type=submit] {
+    background-color: cornflowerblue;
+    border: none;
+    color: white;
+    padding: 16px 80px;
+    /*margin-bottom:12px;*/
+    /*bottom:20%;*/
+    font-family: serif,'Times New Roman';
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin: 4px 2px;
+    cursor: pointer;
+    box-shadow: 0px 0px 4px 4px darkblue;
+}
+
+
+
+
+div[class="create-register"] {
+    padding: 16px 40px;
+    margin: 4px 2px;
+}
+
+
+
+div[class="form-group"] {
+    margin-top: 12px;
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/*i[class="fa fa-user icon"] {*/
+/*padding:  10px 9px  ;*/
+/*padding: 10px;
+    background: white;
+    color: black;
+    min-width: 50px;
+    text-align:center;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}*/
+
+
+
+input[type=radio] {
+    text-decoration: none;
+    color: white;
+}
+
+
+h3 {
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+    font-family: serif,'Times New Roman';
+    text-align: center;
+    color: white;
+    background: rgba(0,0,0,0.5);
+    /*background: #d3d3d3;*/
+    padding: 15px;
+}
+
+button {
+    background-color: gray;
+    font-family: serif,'Times New Roman';
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin: 4px 2px;
+    cursor: pointer;
+    box-shadow: 0px 0px 4px 4px darkblue;
+}
+
+
+div[class="col-md-10"] {
+    /* background:   #ccc;*/ /* background: #d3d3d3;*/
+    background: rgba(0,0,0,0.5);
+    position: center;
+    text-align: center;
+    box-shadow: 0 0 4px 4px lightgrey;
+    margin-bottom: 25px;
+    display: table;
+    width: 80%;
+    padding: 4px 7px 4px 2px;
+}
+
+
+form {
+    padding: 2px 4px 2px 8px;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+/*span {
+    display: table-cell;
+    padding: 0 4px 0 6px;
+}*/
+
+
+
+
+
+
+
+
+
+
+

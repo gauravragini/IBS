@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace IBS.WEBAPI.Controllers
 {
+
+    [Authorize]
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class ReportsController : ControllerBase
@@ -25,7 +27,12 @@ namespace IBS.WEBAPI.Controllers
         [HttpGet]
         public IActionResult GetNewCustomers()
         {
-            return Ok(reportsbussinessLayer.GetNewCustomers());
+            if(User.Identity.IsAuthenticated)
+                return Ok(reportsbussinessLayer.GetNewCustomers());
+            else
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "internal server error");
+            }
 
             //try
             //{

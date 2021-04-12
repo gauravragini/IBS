@@ -1,5 +1,4 @@
 ﻿using IBS.EntitiesLayer.Models;
-using IBS.PresentationLayer.Helper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -19,10 +18,20 @@ namespace IBS.PresentationLayer.Controllers
     {   
         public IActionResult Index()
         {
-            if (HttpContext.Session.GetString("JWToken") != null)
-                return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                return Content(HttpContext.Session.GetString("JWToken"));
+            }
             else
-                return Content("Not Authorized");
+            {
+                return Content(HttpContext.Session.GetString("JWToken")+ "    Unauthorized");
+            }
+            //if (HttpContext.Session.GetString("JWToken") != null)
+            //    return View();
+            //else
+            //    return Content("Not Authorized");
+
+          //  return View();
         }
 
         //Action method to get the list of newly registered customers

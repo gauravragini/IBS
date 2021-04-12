@@ -1,5 +1,6 @@
 ﻿using IBS.BussinessLogicLayer.Interfaces;
 using IBS.EntitiesLayer.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -16,10 +17,8 @@ using System.Threading.Tasks;
 namespace IBS.WEBAPI.Controllers
 {
 
-
     [Route("api/[controller]/[action]")]
     [ApiController]
-
 
     public class AccountController : ControllerBase
     {
@@ -145,9 +144,9 @@ namespace IBS.WEBAPI.Controllers
                 var token = new JwtSecurityToken(
                     issuer: _configuration["JWT:ValidIssuer"],
                     audience: _configuration["JWT:ValidAudience"],
-                    expires: DateTime.Now.AddHours(5),
+                    expires: DateTime.Now.AddHours(1),
                     claims: authClaims,
-                    signingCredentials: new SigningCredentials(authSigninKey, SecurityAlgorithms.HmacSha256Signature)
+                    signingCredentials: new SigningCredentials(authSigninKey, SecurityAlgorithms.HmacSha256)
                     );
                 return Ok(new Response
                 {
@@ -189,6 +188,21 @@ namespace IBS.WEBAPI.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Fail", Message = "Some error occurred" });
 
             return Ok(new Response { Status = "Success", Message = "Customer Rejected" });
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> UpdatePassword([FromBody] UpdatePassword model)
+        {
+            var user = await userManager.FindByNameAsync(model.UserName);
+            var result = await userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+            if (!result.Succeeded)
+            {
+                foreach(var error in result.Errors)
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Fail", Message = error.Description });
+            }
+
+            return Ok(new Response { Status = "Success", Message = "Password Updated Successfully" });
         }
 
     }

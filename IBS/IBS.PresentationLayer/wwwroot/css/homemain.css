@@ -1,0 +1,63 @@
+﻿#loginbox {
+    border: 1px solid;
+    padding: 50px 60px;
+    height: auto;
+    -webkit-box-shadow: -1px 4px 38px 23px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 4px 38px 23px rgba(0,0,0,0.75);
+    box-shadow: -1px 4px 38px 23px rgba(0,0,0,0.75);
+    border-radius: 103px 0px 103px 0px;
+    -moz-border-radius: 103px 0px 103px 0px;
+    -webkit-border-radius: 103px 0px 103px 0px;
+    border: 0px hidden #000000;
+}
+
+#firstcontainer {
+    background: url('/images/t3.png') no-repeat rgba(76, 175, 80, 0.1);
+    border-radius: 103px 0px 103px 0px;
+    -moz-border-radius: 103px 0px 103px 0px;
+    -webkit-border-radius: 103px 0px 103px 0px;
+    border: 0px hidden #000000;
+    background-size: cover;
+    background-repeat: no-repeat;
+    stroke-opacity: 0.3;
+}
+
+.form {
+    height: 50px;
+}
+
+#inputusername {
+}
+
+#inputpassword {
+}
+
+fontuser {
+    position: relative;
+}
+
+.fontuser i {
+    position: absolute;
+    color: gray;
+}
+
+.fontpassword {
+    position: relative;
+}
+
+    .fontpassword i {
+        position: absolute;
+        color: gray;
+    }
+
+#demo {
+    height: 40px;
+}
+
+#body {
+    background: url(http://api.thumbr.it/whitenoise-361x370.png?background=4c828fff&noise=626262&density=54&opacity=69)
+}
+
+body{
+    background-color:white;
+}

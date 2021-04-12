@@ -1,5 +1,4 @@
 ﻿using IBS.EntitiesLayer.Models;
-using IBS.PresentationLayer.Helper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -14,7 +13,6 @@ namespace IBS.PresentationLayer.Controllers
     public class CustomerController : Controller
     {
         const string sessionAccountNo = "accountNumber";
-        IBSAPI api = new IBSAPI();
 
 
         [HttpGet]
@@ -316,6 +314,37 @@ namespace IBS.PresentationLayer.Controllers
                         ViewData["error"] = content.Message;
                         return View("error");
                     }
+                }
+            }
+            catch (Exception e)
+            {
+                ViewData["error"] = e.Message;
+                return View("~/Views/Shared/ExceptionError.cshtml");
+            }
+        }
+
+
+
+        //updatePassword
+        public IActionResult UpdatePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdatePassword(UpdatePassword model)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    Transaction transaction = new Transaction();
+                    client.BaseAddress = new Uri("http://localhost:10293/api/Account");
+                    HttpResponseMessage response = await client.PostAsJsonAsync<UpdatePassword>("Account/UpdatePassword/",model);
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    Response content = JsonConvert.DeserializeObject<Response>(result);
+                    return Content(content.Message);
+          
                 }
             }
             catch (Exception e)

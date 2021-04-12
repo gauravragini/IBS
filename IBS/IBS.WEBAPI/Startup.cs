@@ -52,7 +52,28 @@ namespace IBS.WEBAPI
             //For Identity
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-               // .AddDefaultTokenProviders();
+            // .AddDefaultTokenProviders();
+
+
+            services.AddAuthentication(option =>
+            {
+                option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+          .AddJwtBearer(options =>
+          {
+              options.SaveToken = true;
+              options.RequireHttpsMetadata = false;
+              options.TokenValidationParameters = new TokenValidationParameters
+              {
+                  ValidateIssuer = true,
+                  ValidateAudience = true,
+                  ValidateIssuerSigningKey = true,
+                  ValidAudience = Configuration["JWT:ValidAudience"],
+                  ValidIssuer = Configuration["JWT:ValidIssuer"],
+                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
+              };
+          });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
