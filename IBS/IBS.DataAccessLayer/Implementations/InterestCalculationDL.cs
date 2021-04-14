@@ -24,28 +24,33 @@ namespace IBS.DataAccessLayer.Implementations
         /// </summary>
         /// <param name="adminID">maintain which admin has performed this task</param>
         /// <returns>Function returns the confirmation that intrest has been calculated for all accounts</returns>
-        public Adminwork CalculateInterest(string adminID)
+        public Adminwork CalculateInterest(string adminId)
         {
-            decimal interestRate = 0;
+            decimal interestRate = 100;
+            decimal interestamount = 0;
             IEnumerable<Account> accounts = database.Accounts.ToList();
+            
             foreach (Account account in accounts)
             {
                 if (account.AccountType == "Savings")
                 {
-                     interestRate = Convert.ToDecimal(0.6); //0.6% permonth on savings account
+                    interestRate = Convert.ToDecimal(0.6); //0.6% permonth on savings account
+
                 }
                 else if (account.AccountType == "Fixed")
                 {
                     interestRate = Convert.ToDecimal(0.4); //0.4% permonth on fixed account
                 }
-                database.Accounts.FromSqlRaw<Account>("CalculateInterest {0},{1}", account.AccountNumber, interestRate, adminID).ToList().FirstOrDefault();
+                interestamount = (decimal)(account.InterestAmount + (interestRate / 100) * account.AvailableBalance);
+                account.InterestAmount = interestamount;
+                database.SaveChanges();
             }
-
+           
             //storing task info in adminwork table and returing it 
             Adminwork work = new Adminwork();
             work.WorkType = "InterestCalculation";
             work.WorkTime = DateTime.Now;
-            work.Id = adminID;
+            work.ID = adminId;
             database.Adminworks.Add(work);
             database.SaveChanges();
             return work;
@@ -56,11 +61,20 @@ namespace IBS.DataAccessLayer.Implementations
         public DateTime lastInterestCalculation()
         {
             DateTime date = new DateTime(1000, 01, 01, 12, 00, 00);
-            var res = from work in database.Adminworks
-                   where work.WorkType == "InterestCalculation"
-                   select work.WorkTime;
-            if(res!=null)
-                date = Convert.ToDateTime(res.LastOrDefault());
+
+
+            int count = (from x in database.Adminworks select x).Count();
+            Adminwork res = null;
+            if (count >= 1)
+            {
+               res = (from record in database.Adminworks orderby record.WorkId where record.WorkType == "InterestCalculation" select record).Last();
+            }
+
+            //var res = from work in database.Adminworks
+            //       where work.WorkType == "InterestCalculation" 
+            //       select work.WorkTime;
+            if (res!=null)
+                date = Convert.ToDateTime(res.WorkTime);
 
             return date;
         }

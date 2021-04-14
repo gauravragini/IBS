@@ -20,6 +20,7 @@ C:\Users\Ragini\Desktop\IBS\IBS\IBS.DataAccessLayer\bin\Debug\netcoreapp3.1\IBS.
 C:\Users\Ragini\Desktop\IBS\IBS\IBS.DataAccessLayer\bin\Debug\netcoreapp3.1\IBS.DataAccessLayer.pdb
 C:\Users\Ragini\Desktop\IBS\IBS\IBS.DataAccessLayer\bin\Debug\netcoreapp3.1\IBS.EntitiesLayer.dll
 C:\Users\Ragini\Desktop\IBS\IBS\IBS.DataAccessLayer\bin\Debug\netcoreapp3.1\IBS.EntitiesLayer.pdb
+C:\Users\Ragini\Desktop\IBS\IBS\IBS.DataAccessLayer\obj\Debug\netcoreapp3.1\IBS.DataAccessLayer.csprojAssemblyReference.cache
 C:\Users\Ragini\Desktop\IBS\IBS\IBS.DataAccessLayer\obj\Debug\netcoreapp3.1\IBS.DataAccessLayer.AssemblyInfoInputs.cache
 C:\Users\Ragini\Desktop\IBS\IBS\IBS.DataAccessLayer\obj\Debug\netcoreapp3.1\IBS.DataAccessLayer.AssemblyInfo.cs
 C:\Users\Ragini\Desktop\IBS\IBS\IBS.DataAccessLayer\obj\Debug\netcoreapp3.1\IBS.DataAccessLayer.csproj.CoreCompileInputs.cache
@@ -27,4 +28,3 @@ C:\Users\Ragini\Desktop\IBS\IBS\IBS.DataAccessLayer\obj\Debug\netcoreapp3.1\IBS.
 C:\Users\Ragini\Desktop\IBS\IBS\IBS.DataAccessLayer\obj\Debug\netcoreapp3.1\IBS.DataAccessLayer.dll
 C:\Users\Ragini\Desktop\IBS\IBS\IBS.DataAccessLayer\obj\Debug\netcoreapp3.1\IBS.DataAccessLayer.pdb
 C:\Users\Ragini\Desktop\IBS\IBS\IBS.DataAccessLayer\obj\Debug\netcoreapp3.1\IBS.DataAccessLayer.genruntimeconfig.cache
-C:\Users\Ragini\Desktop\IBS\IBS\IBS.DataAccessLayer\obj\Debug\netcoreapp3.1\IBS.DataAccessLayer.csprojAssemblyReference.cache

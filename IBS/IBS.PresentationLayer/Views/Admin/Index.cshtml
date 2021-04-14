@@ -1,8 +1,78 @@
-﻿
+﻿@model ApplicationUser
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Home";
     Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
 }
 
-<h1>Index ADMIN</h1>
 
+@if (ViewData["passwordsuccess"] != null)
+{
+    <br />
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>@ViewData["passwordsuccess"]</strong>
+    </div>
+}
+
+
+<hr />
+<h4><i>MY PROFILE</i></h4>
+<hr />
+
+<div id="profile"  style="background-color:white">
+    <table style="margin-left:170px;">
+        <tr>
+            <td>First Name</td>
+            <td>@Model.FirstName</td>
+            <td rowspan="11">
+                <img src="~/images/account2.jpg" style="float:right; padding-left:70px; width:400px;height:400px" />
+            </td>
+        </tr>
+        <tr>
+            <td>Last Name </td>
+            <td>@Model.LastName</td>
+            <td rowspan="11"></td>
+        </tr>
+        <tr>
+            <td>Email Id </td>
+            <td>@Model.UserName</td>
+            <td rowspan="11"></td>
+        </tr>
+        <tr>
+            <td>Phone Number </td>
+            <td>@Model.PhoneNumber</td>
+            <td rowspan="11"></td>
+        </tr>
+        <tr>
+            <td>Date Of Birth</td>
+            <td>@Model.Dob</td>
+            <td rowspan="11"></td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>@Model.Gender</td>
+            <td rowspan="11"></td>
+        </tr>
+        <tr>
+            <td>Father's Name</td>
+            <td>@Model.FathersName</td>
+            <td rowspan="11"></td>
+        </tr>
+        <tr>
+            <td>Mother's Name</td>
+            <td>@Model.MothersName</td>
+            <td rowspan="11"></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>@Model.Address</td>
+            <td rowspan="11"></td>
+        </tr>
+        <tr>
+            <td>PinCode</td>
+            <td>@Model.Pincode</td>
+            <td rowspan="11"></td>
+        </tr>
+
+    </table>
+</div>

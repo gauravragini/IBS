@@ -1,19 +1,179 @@
-﻿
-
-
-@model string
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Authentication/_LayoutHome.cshtml";
-
 }
 
-<h1>Index</h1>
+@model IBS.EntitiesLayer.Models.Login
 
-@Model
-@if (User?.Identity?.IsAuthenticated ?? false)
+<link rel="stylesheet" href="~/css/homemain.css" />
+
+@if (ViewData["message"] != null)
 {
-    <a asp-controller="Account" asp-action="Logout" class="btn btn-danger">Logout</a>
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>@ViewData["message"]</strong>
+    </div>
 }
 
-@*<a href="/account/login">Logout</a>*@
+
+<div id="loginrow" class="row">
+    <div class="col-md-5" style="padding:40px;">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                @*<label asp-for="UserName" class="control-label"></label>*@
+                <input asp-for="UserName" class="form-control" placeholder="  Email" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @*<label asp-for="Password" class="control-label"></label>*@
+                <input asp-for="Password" class="form-control" placeholder="  Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-outline-primary" style="width:45%" />
+                <input type="reset" value="Clear" class="btn btn-outline-dark" style="width:45%" />
+            </div>
+        </form>
+
+       
+
+        <div class="dropdown dropright">
+           <label> New User?  </label>
+            <button  type="button" class="btn btn-primary dropdown-toggle ml-4" data-toggle="dropdown"> Register
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="~/Authentication/RegisterAdmin">Admin</a>
+                <a class="dropdown-item" href="~/Authentication/RegisterCustomer">Customer</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="col-md-7">
+        <div id="demo" class="carousel slide" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+                <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/images/t1.png " style="height:290px;width:100%" alt="Los Angeles">
+                    <div class="carousel-caption">
+                        <h3>Los Angeles</h3>
+                        <p>We had such a great time in LA!</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/images/t1.png" style="height:290px;width:100%" alt="Chicago">
+                    <div class="carousel-caption">
+                        <h3>Chicago</h3>
+                        <p>Thank you, Chicago!</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/images/t1.png" style="height:290px;width:100%" alt="New York">
+                    <div class="carousel-caption">
+                        <h3>New York</h3>
+                        <p>We love the Big Apple!</p>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+<hr />
+<h1 style="text-align:center">Services Provided</h1>
+
+
+<div class="row">
+    <hr />
+    <div class="col-8">
+        <br />
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet felis ac lacus vestibulum sagittis.
+            Sed finibus malesuada diam, a posuere tortor condimentum eget. Vestibulum consectetur maximus ante, eget suscipit tortor placerat eget.
+            Suspendisse lorem ex, tincidunt nec lobortis sit amet, aliquet non sapien. Donec laoreet tortor nec facilisis pellentesque. Nulla sed luctus nunc.
+            Sed bibendum, ante id ornare imperdiet, urna nisi consectetur mauris, lobortis placerat nunc ipsum quis turpis. Integer non sodales lectus.
+            Integer fermentum pulvinar enim, iaculis lobortis tortor faucibus ac. Nunc at consequat felis.
+        </p>
+    </div>
+    <div class="col-4">
+        <img src="~/images/services.png" width="200" height="200" style="margin-left:30px" />
+    </div>
+</div>
+<hr />
+
+<h1 style="text-align:center">What's New</h1>
+
+<div class="row">
+    <div class="col-4">
+        <img src="~/images/addinterest.png" width="200" height="200" style=""/>
+    </div>
+    <div class="col-8">
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet felis ac lacus vestibulum sagittis.
+            Sed finibus malesuada diam, a posuere tortor condimentum eget. Vestibulum consectetur maximus ante, eget suscipit tortor placerat eget.
+            Suspendisse lorem ex, tincidunt nec lobortis sit amet, aliquet non sapien. Donec laoreet tortor nec facilisis pellentesque. Nulla sed luctus nunc.
+            Sed bibendum, ante id ornare imperdiet, urna nisi consectetur mauris, lobortis placerat nunc ipsum quis turpis. Integer non sodales lectus.
+            Integer fermentum pulvinar enim, iaculis lobortis tortor faucibus ac. Nunc at consequat felis.
+        </p>
+
+    </div>
+</div>
+<hr />
+<h1 style="text-align:center">About Us</h1>
+
+<div class="row">
+    <div class="col-6">
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet felis ac lacus vestibulum sagittis.
+            Sed finibus malesuada diam, a posuere tortor condimentum eget. Vestibulum consectetur maximus ante, eget suscipit tortor placerat eget.
+            Suspendisse lorem ex, tincidunt nec lobortis sit amet, aliquet non sapien.
+        </p>
+
+    </div>
+    <div class="col-6">
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet felis ac lacus vestibulum sagittis.
+            Sed finibus malesuada diam, a posuere tortor condimentum eget. Vestibulum consectetur maximus ante, eget suscipit tortor placerat eget.
+            Suspendisse lorem ex, tincidunt nec lobortis sit amet, aliquet non sapien. Donec laoreet tortor nec facilisis pellentesque. Nulla sed luctus nunc.
+            Sed bibendum, ante id ornare imperdiet, urna nisi consectetur mauris, lobortis placerat nunc ipsum quis turpis. Integer non sodales lectus.
+            Integer fermentum pulvinar enim, iaculis lobortis tortor faucibus ac. Nunc at consequat felis.
+        </p>
+
+    </div>
+</div>
+<hr />
+<h1 style="text-align:center">Contact Us</h1>
+
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <div class="container">
+            <form action="">
+                <input type="text" id="name" name="name" placeholder="Name">
+
+                <input type="text" id="emailid" name="emailid" placeholder="Email-id">
+                <textarea id="subject" name="subject" placeholder="Write something.." style="height:100px"></textarea>
+
+                <input type="submit" value="Submit" class="btn btn-block">
+            </form>
+        </div>
+    </div>
+
+    <div class="col-3"></div>
+
+
+</div>

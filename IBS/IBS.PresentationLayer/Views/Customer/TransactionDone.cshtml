@@ -1,10 +1,14 @@
 ﻿@model IBS.EntitiesLayer.Models.Transaction
+@{
+    ViewData["Title"] = "Transaction Successful";
+    Layout = "~/Views/Customer/_LayoutCustomer.cshtml";
+}
 
 
-       
-        
+
 <div class="success">
     <h4>Transaction Successful !!!!!</h4>
+    <hr />
     <dl class="row">
         <dt class="col-sm-6">
             @Html.DisplayNameFor(model => model.TransactionId)
@@ -44,6 +48,6 @@
         </dd>
     </dl>
 </div>
-     
+
 
 

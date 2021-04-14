@@ -5,92 +5,325 @@
     Layout = "~/Views/Authentication/_LayoutHome.cshtml";
 
 }
-<style>
-    h3 {
-        text-align: center;
-    }
-</style>
+<link rel="stylesheet" href="~/css/registeradmin.css" />
+
+
 
 <h3>Registration for Admin</h3>
 <hr />
-<img src="https://pathwayport.com/saasland/images/login@4x.png" height="800" width="500" ALIGN="right" />
-<body style="background-color:powderblue;">
-</body>
+<center>
+    <div class="col-md-8">
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="RegisterAdmin">
+        <form asp-action="RegisterCustomer" name="RegisterCustomer" onsubmit="return validateForm()" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
             <div class="form-group">
                 <label asp-for="UserName" class="control-label"> </label>
-                <input asp-for="UserName" class="form-control" size="100" placeholder="Enter User Name" required />
+                @*<i class="fa fa-user icon"> </i>*@
+                <input asp-for="UserName" type="text" name="email" class="form-control" placeholder="Enter Email ID(abcd@xyz.com)" required minlength="4" />
                 <span asp-validation-for="UserName" class="text-danger"></span>
+                <div class="error" id="emailErr"></div>
             </div>
             <div class="form-group">
                 <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" placeholder="Enter Phone Number" required size="10" />
+                <input asp-for="PhoneNumber" type="text" name="mobile" class="form-control" placeholder="Enter Phone No(10-Digits)" required maxlength="10" minlength="10" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                <div class="error" id="mobileErr"></div>
             </div>
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" placeholder="Enter First Name" required />
+                <input asp-for="FirstName" type="text" name="fname" class="form-control" placeholder="Enter First Name" required />
                 <span asp-validation-for="FirstName" class="text-danger"></span>
+                <div class="error" id="nameErr"></div>
             </div>
             <div class="form-group">
                 <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" placeholder="Enter Last Name" required />
+                <input asp-for="LastName" type="text" name="lname" class="form-control" placeholder="Enter Last Name" required />
                 <span asp-validation-for="LastName" class="text-danger"></span>
+                <div class="error" id="lnameErr"></div>
             </div>
             <div class="form-group">
                 <label asp-for="Dob" class="control-label"></label>
-                <input asp-for="Dob" class="form-control" placeholder="Enter Dob" required />
+                <input asp-for="Dob" class="form-control" required />
                 <span asp-validation-for="Dob" class="text-danger"></span>
             </div>
-            <div>
-                <p>Please select your gender:</p>
-                <input type="radio" id="male" name="gender" value="male">
-                <label for="male">Male</label><br>
-                <input type="radio" id="female" name="gender" value="female">
-                <label for="female">Female</label><br>
-                <input type="radio" id="other" name="gender" value="other">
-                <label for="other">Other</label>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label" required></label><br />
+
+                <label class="container">
+                    <input type="radio" asp-for="Gender" value="Male"> Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" asp-for="Gender" value="Female"> Female
+                    <span class="checkmark"></span>
+                </label>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+                <div class="error" id="genderErr"></div>
             </div>
+
+
+
             <div class="form-group">
                 <label asp-for="FathersName" class="control-label"></label>
-                <input asp-for="FathersName" class="form-control" placeholder="Enter Father's Name" required />
+                <input asp-for="FathersName" type="text" name="FatherName" class="form-control" placeholder="Enter Father's Name" required />
                 <span asp-validation-for="FathersName" class="text-danger"></span>
+                <div class="error" id="fatherErr"></div>
             </div>
             <div class="form-group">
                 <label asp-for="MothersName" class="control-label"></label>
-                <input asp-for="MothersName" class="form-control" placeholder="Enter Mother's Name" required />
+                <input asp-for="MothersName" type="text" name="MotherName" class="form-control" placeholder="Enter Mother's Name" required />
                 <span asp-validation-for="MothersName" class="text-danger"></span>
+                <div class="error" id="motherErr"></div>
             </div>
             <div class="form-group">
                 <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" placeholder="Enter Address" required />
+                <input asp-for="Address" type="text" name="Addres" class="form-control" placeholder="Enter your Address" required />
                 <span asp-validation-for="Address" class="text-danger"></span>
+                <div class="error" id="addErr">
+                </div>
             </div>
             <div class="form-group">
                 <label asp-for="Pincode" class="control-label"></label>
-                <input asp-for="Pincode" class="form-control" placeholder="Enter Pincode" required />
+                <input asp-for="Pincode" type="text" name="Pin" class="form-control" placeholder="Enter pincode (6-Digits)" required maxlength="6" minlength="6" />
                 <span asp-validation-for="Pincode" class="text-danger"></span>
+                <div class="error" id="pinErr"></div>
             </div>
             <div class="form-group">
                 <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" placeholder="Password" required />
+                <input asp-for="Password" name="password" type="password" value="" class="form-control" placeholder="Enter Password(max 8 characters)" maxlength="8" required />
                 <span asp-validation-for="Password" class="text-danger"></span>
+                <div class="error" id="passErr"></div>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group" style="display:inline">
+                <input type="submit" value="Create" class="btn btn-primary" />                 
             </div>
         </form>
     </div>
-</div>
+</center>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
+
+@*<div>
+        <a asp-action="Index">Back to List</a>
+    </div>*@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<script>
+    function printError(elemId, hintMsg) {
+        document.getElementById(elemId).innerHTML = hintMsg;
+    }
+
+    function validateForm() {
+        //retrieving the value of form
+        var fname = document.RegisterCustomer.fname.value;
+        var lname = document.RegisterCustomer.lname.value;
+        var email = document.RegisterCustomer.email.value;
+        var mobile = document.RegisterCustomer.mobile.value;
+        var gender = document.RegisterCustomer.gender.value;
+        var FatherName = document.RegisterCustomer.FatherName.value;
+        var MotherName = document.RegisterCustomer.MotherName.value;
+        var Addres = document.RegisterCustomer.Addres.value;
+        var Pin = document.RegisterCustomer.Pin.value;
+
+
+
+
+        var account = document.RegisterCustomer.account;
+
+        //var password = document.RegisterCustomer.password;
+
+
+
+        //defining error variables with default values
+        var nameErr = lnameErr = emailErr = mobileErr = genderErr = fatherErr = motherErr = addErr = pinErr = nomineeErr = nrErr = nageErr = ngenderErr = nmobError = nadErr = accErr = /passErr/ true;
+
+
+        //validation for first name
+        if (fname == "") {
+            printError("nameErr", "Please enter your name");
+        }
+        else {
+            var regex = /^[a-zA-Z\s]+$/;
+            if (regex.test(fname) === false) {
+                printError("nameErr", "Please enter a valid name");
+            } else {
+                printError("nameErr", "");
+                nameErr = false;
+            }
+        }
+
+
+        //validation for lastname field
+
+        if (lname == "") {
+            printError("lnameErr", "Please enter your last name");
+
+        }
+        else {
+            var regex = /^[a-zA-Z\s]+$/;
+            if (regex.test(lname) === false) {
+                printError("lnameErr", "Please enter a valid name");
+            } else {
+                printError("lnameErr", "");
+                nameErr = false;
+            }
+
+        }
+
+
+
+        //validation for email
+        if (email == "") {
+            printError("emailErr", "Please enter your email address");
+        }
+        else {
+            var regex = /^\S+\S+\.\S+$/;
+            if (regex.test(email) === false) {
+                printError("emailErr", "Please enter a valid email address");
+            }
+            else {
+                printError("emailErr", "");
+                emailErr = false;
+            }
+        }
+
+
+
+        //validation for mobile number
+        if (mobile == "") {
+            printError("mobileErr", "Please enter your mobile number");
+        }
+        else {
+            var regex = /^[1-9]\d{9}$/;
+            if (regex.test(mobile) === false) {
+                printError("mobileErr", "Please enter a valid 10 digit mobile number");
+
+            }
+            else {
+                printError("mobileErr", "");
+                mobileErr = false;
+            }
+        }
+
+
+        //validation for gender
+        if (gender == "") {
+            printError("genderErr", "Please select your gender");
+        }
+        else {
+            printError("genderErr", "");
+            genderErr = false;
+        }
+
+
+
+        //validation for Fathername
+        if (FatherName == "") {
+            printError("fatherErr", "Please enter your Father Name");
+        }
+        else {
+            var regex = /^[a-zA-Z\s]+$/;
+            if (regex.test(FatherName) === false) {
+                printError("fatherErr", "Please enter valid name");
+            } else {
+                printError("fatherErr", "");
+                fatherErr = false;
+            }
+        }
+
+
+        //validation for Mothername field
+        if (MotherName == "") {
+            printError("motherErr", "Please enter your Mother Name");
+        }
+        else {
+            var regex = /^[a-zA-Z\s]+$/;
+            if (regex.test(MotherName) === false) {
+                printError("motherErr", "Please enter valid name");
+            }
+            else {
+                printError("motherErr", "");
+                motherErr = false;
+            }
+        }
+
+
+        //validation for Address
+        if (Addres == "") {
+            printError("addErr", "Please enter Address");
+        }
+        else {
+            printError("addErr", "");
+            addErr = false;
+        }
+
+        //validation for Pincode
+        if (Pin == "") {
+            printError("pinErr", "Please enter pincode");
+        }
+        else {
+            var regex = /^[0-9]{5}(?:-[0-9]{4})?$/;
+            if (regex.test(Pin) === false) {
+                printError("pinErr", "Please enter valid 6 digit pincode");
+            }
+            else {
+                printError("pinErr", "");
+                pinErr = false;
+            }
+        }
+
+
+
+
+        //validation for account
+        if (account == "") {
+            printError("accErr", "Please select your account");
+        }
+        else {
+            printError("accErr", "");
+            accErr = false;
+        }
+
+
+
+    //validation for password
+    //if (password == "")
+    //{
+    //    printError("passErr", "Please enter Password");
+    //}
+    //else
+    //{
+    //    if (password.length < 8)
+    //    {
+    //        printError("passErr", "Password must not be less than 8 characters");
+    //    }
+    //    //else
+    //    //{
+    //    //    (password.length > 10)
+    //    //    {
+    //    //        printError("passErr","Password must not be greater than 10 characters")
+    //    //    }
+    //    //}
+    //    else {
+    //        printError("passErr", "");
+    //        passErr = false;
+    //    }
+    //}
+
+    //if (password.length < 8) {
+    //    document.getElementById("passErr").innerHTML = "**Password length must be atleast 8 characters";
+
+    //}
+    //else {
+    //    if (password.length > 15) {
+    //        document.getElementById("passErr").innerHTML = "**Password length must not exceed 15 characters";
+    //    }
+    //    else {
+    //        printError("passErr", "");
+    //        passErr = false;
+    //    }
+
+    //}
+</script>

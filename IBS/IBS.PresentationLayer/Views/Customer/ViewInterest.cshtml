@@ -1,10 +1,14 @@
 ﻿@model IBS.EntitiesLayer.Models.Account
 @using Microsoft.AspNetCore.Http
+@{
+    ViewData["Title"] = "Interest";
+    Layout = "~/Views/Customer/_LayoutCustomer.cshtml";
+}
 
 
 
 <hr />
-<h4>Interest Amount </h4>
+<h4><i>INTEREST AMOUNT</i> </h4>
 <hr />
 <h2 class="text-center">Your Interest amount is : @Model.InterestAmount</h2>
 

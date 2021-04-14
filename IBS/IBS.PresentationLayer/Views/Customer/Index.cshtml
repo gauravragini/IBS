@@ -1,46 +1,184 @@
-﻿@model IBS.EntitiesLayer.Models.Account
+﻿@model IBS.EntitiesLayer.Models.RegisterCustomer
+
+@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Customer/_LayoutCustomer.cshtml";
+}
 
 
+@if (ViewData["passwordsuccess"] != null)
+{
+    <br />
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>@ViewData["passwordsuccess"]</strong>
+    </div>
+}
 
 <hr />
-        <h4>Account</h4>
-        <hr />
-        <dl class="row">
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AccountNumber)
-               
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AccountNumber)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AccountType)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AccountType)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AvailableBalance)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AvailableBalance)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.InterestAmount)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.InterestAmount)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AccountCreationTime)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AccountCreationTime)
-            </dd>
-            @*<dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.UserId)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.UserId)
-            </dd>*@
-        </dl>
+<h4><i>MY ACCOUNT AND PROFILE</i></h4>
+<hr />
+
+
+<div class="row">
+
+    <button onclick="account()" class="btn-lg btn-outline-primary homebtn" style="background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(0, 153, 153,1));
+        font-weight: bolder;
+        color: black">
+        Account Summary
+    </button>
+    <div id="account">
+        <table style="margin-left:200px;">
+            <tr>
+                <td>Account Number</td>
+                <td>@Html.DisplayFor(model => model.AccountNumber)</td>
+                <td rowspan="5">
+                    <img src="~/images/account2.jpg" style="float:right; margin-left:50px; width:200px;height:200px" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>Account Type</td>
+                <td>@Html.DisplayFor(model => model.AccountType)</td>
+                <td rowspan="5"></td>
+            </tr>
+            <tr>
+                <td>Available Balance</td>
+                <td>@Html.DisplayFor(model => model.AvailableBalance)</td>
+                <td rowspan="5"></td>
+            </tr>
+            <tr>
+                <td>Interest Amount</td>
+                <td>@Html.DisplayFor(model => model.InterestAmount)</td>
+                <td rowspan="5"></td>
+            </tr>
+            <tr>
+                <td>Account Creation Time</td>
+                <td>@Html.DisplayFor(model => model.AccountCreationTime)</td>
+                <td rowspan="5"></td>
+            </tr>
+
+        </table>         
+    </div>
+
+    <button onclick="profile()" class="btn-lg btn-outline-primary homebtn" style="        background-image: linear-gradient(to left, rgba(255,0,0,0), rgba(0, 153, 153,1));
+        font-weight: bolder;
+        color: black">
+        Profile Details
+    </button>
+    <div id="profile" style="display:none;">
+        <table style="margin-left:200px;">
+            <tr>
+                <td>First Name</td>
+                <td>@Html.DisplayFor(model => model.FirstName)</td>
+                <td rowspan="11">
+                    <img src="~/images/account3.png" style="float:right; padding-left:50px; width:500px;height:500px" />
+                </td>
+            </tr>
+            <tr>
+                <td>Last Name </td>
+                <td>@Html.DisplayFor(model => model.LastName)</td>
+                <td rowspan="11"></td>
+            </tr>
+            <tr>
+                <td>Email Id </td>
+                <td>@Html.DisplayFor(model => model.UserName)</td>
+                <td rowspan="11"></td>
+            </tr>
+            <tr>
+                <td>Phone Number </td>
+                <td>@Html.DisplayFor(model => model.PhoneNumber)</td>
+                <td rowspan="11"></td>
+            </tr>
+            <tr>
+                <td>Date Of Birth</td>
+                <td>@Html.DisplayFor(model => model.Dob)</td>
+                <td rowspan="11"></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>@Html.DisplayFor(model => model.Gender)</td>
+                <td rowspan="11"></td>
+            </tr>
+            <tr>
+                <td>Father's Name</td>
+                <td>@Html.DisplayFor(model => model.FathersName)</td>
+                <td rowspan="11"></td>
+            </tr>
+            <tr>
+                <td>Mother's Name</td>
+                <td>@Html.DisplayFor(model => model.MothersName)</td>
+                <td rowspan="11"></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>@Html.DisplayFor(model => model.Address)</td>
+                <td rowspan="11"></td>
+            </tr>
+            <tr>
+                <td>PinCode</td>
+                <td>@Html.DisplayFor(model => model.Pincode)</td>
+                <td rowspan="11"></td>
+            </tr>
+
+        </table>
+    </div>
+
+
+
+    <button onclick="balance()" class="btn-lg btn-outline-primary homebtn" style="background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(0, 153, 153,1));
+        font-weight: bolder;
+        color: black">
+        Available Balance
+    </button>
+    <div id="balance" style="display:none">
+        <p style="font-weight: bolder;
+        color: black"> Your Current Available Balance is  : @Html.DisplayFor(model => model.AvailableBalance) </p>
+    </div>
+
+
+    <button class="btn-lg btn-outline-primary homebtn" style="background-image: linear-gradient(to left, rgba(255,0,0,0), rgba(0, 153, 153,1));">
+        <a asp-action="UpdatePassword" style="font-weight: bolder; color: black ">Update Password</a>
+    </button>
+
+</div>
+
+
+<script>
+    function account() {
+        var x = document.getElementById("account");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+    function balance() {
+        var x = document.getElementById("balance");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+    function profile() {
+        var x = document.getElementById("profile");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+    function password() {
+        var x = document.getElementById("password");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+

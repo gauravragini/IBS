@@ -1,16 +1,23 @@
 ﻿@model IEnumerable<IBS.EntitiesLayer.Models.RegisterCustomer>
 
 @{
-    ViewData["Title"] = "GetNewCustomers";
+    ViewData["Title"] = "NewCustomers";
     Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
 }
 
-<h1>GetNewCustomers</h1>
+@if (ViewData["message"] != null)
+{
+    <br />
+    <div class="alert alert-primary alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>@ViewData["message"]</strong>
+    </div>
+}
+<hr />
+<h4><i>List Of Account Holders</i></h4>
+<hr />
 
-<p>
-    @ViewData["message"]
-</p>
-<table class="table">
+<table id="myTable"class="table table-striped table-responsive gridtable" style="background-color:white">
     <thead>
         <tr>
             <th>
@@ -43,58 +50,54 @@
             <th>
                 @Html.DisplayNameFor(model => model.Pincode)
             </th>
-      
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-    
-            <th></th>
+            <th style="width:30%"></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dob)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FathersName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MothersName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pincode)
-            </td>        
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-         
-            <td>
-                @Html.ActionLink("Details", "Details", new { username = item.UserName }) |
-                @Html.ActionLink("Approve", "ApproveCustomer", new {  username=item.UserName  }) |
-                @Html.ActionLink("Reject", "RejectCustomer", new {  username=item.UserName })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dob)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FathersName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MothersName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pincode)
+                </td>
+                <td>
+                    <a class="btn btn-success" asp-action="ApproveCustomer" asp-route-username=@item.UserName>Approve</a>
+                    <a class="btn btn-danger" asp-action="RejectCustomer" asp-route-username=@item.UserName>Reject</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<script>
+    $(document).ready(function () {
+        $('#myTable').dataTable();
+    });
+</script>

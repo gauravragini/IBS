@@ -1,6 +1,16 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
+﻿label {
+    text-align: left;
+    color: white;
+    padding: 8px;
+    font-family: serif,'Times New Roman';
+    font-size: 20px;
+    letter-spacing: 1px;
+    width: 42%;
+    display: table-cell;
+}
+h3{
+    color:aqua;
+}
 a.navbar-brand {
     white-space: normal;
     text-align: center;
@@ -60,7 +70,7 @@ html {
     min-height: 100%;
 }
 
-.content {
+body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
     background: url(../images/background.jpg) no-repeat center fixed;
@@ -70,13 +80,7 @@ html {
 }
 
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    white-space: nowrap;
-    line-height: 60px; /* Vertically center the text there */
-}
+
 
 
 
@@ -89,23 +93,11 @@ input[type=text] {
     font-size: 16px;
     background-color: white;
     outline: none;
-    /*padding: 12px 20px 12px 40px;*/
-    padding: 10px;
+    /padding: 12px 20px 12px 40px;
+    / padding:10px;
 }
 
-label {
-    /*position: center;*/
-    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
-    color: white;
-    padding: 8px;
-    font-family: serif,'Times New Roman';
-    font-size: 20px;
-    letter-spacing: 1px;
-    width: 42%;
-    display: table-cell;
-    /* width: 1px;*/
-    /*white-space: nowrap;*/
-}
+
 
 
 input[type=submit] {
@@ -113,9 +105,9 @@ input[type=submit] {
     border: none;
     color: white;
     padding: 16px 80px;
-    /*margin-bottom:12px;*/
-    /*bottom:20%;*/
-    font-family: serif,'Times New Roman';
+    /margin-bottom:12px;
+    / /bottom:20%;
+    / font-family: serif,'Times New Roman';
     font-size: 18px;
     letter-spacing: 1px;
     margin: 4px 2px;
@@ -140,9 +132,10 @@ div[class="form-group"] {
     margin-bottom: 20px;
 }
 
-/*i[class="fa fa-user icon"] {*/
-/*padding:  10px 9px  ;*/
-/*padding: 10px;
+/i[class="fa fa-user icon"] {
+    / /padding: 10px 9px;
+    /
+    /*padding: 10px;
     background: white;
     color: black;
     min-width: 50px;
@@ -150,24 +143,14 @@ div[class="form-group"] {
     border: 2px solid #ccc;
     border-radius: 4px;
 }*/
+    input[type=radio]
 
-
-
-input[type=radio] {
+{
     text-decoration: none;
     color: white;
 }
 
 
-h3 {
-    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
-    font-family: serif,'Times New Roman';
-    text-align: center;
-    color: white;
-    background: rgba(0,0,0,0.5);
-    /*background: #d3d3d3;*/
-    padding: 15px;
-}
 
 button {
     background-color: gray;
@@ -179,15 +162,14 @@ button {
     letter-spacing: 1px;
     margin: 4px 2px;
     cursor: pointer;
-    box-shadow: 0px 0px 4px 4px darkblue;
 }
 
 
-div[class="col-md-10"] {
-    /* background:   #ccc;*/ /* background: #d3d3d3;*/
+div[class="col-md-8"] {
+    /* background:   #ccc;// background: #d3d3d3;*/
     background: rgba(0,0,0,0.5);
     position: center;
-    text-align: center;
+    text-align: left;
     box-shadow: 0 0 4px 4px lightgrey;
     margin-bottom: 25px;
     display: table;
@@ -208,14 +190,3 @@ form {
     display: table-cell;
     padding: 0 4px 0 6px;
 }*/
-
-
-
-
-
-
-
-
-
-
-

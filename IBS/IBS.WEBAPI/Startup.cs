@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,11 +36,14 @@ namespace IBS.WEBAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            
+            //adding bussiness layer
             services.AddScoped<IAccountBL, AccountBL>();
             services.AddScoped<ITransactionBL, TransactionBL>();
             services.AddScoped<IInterestCalculationBL, InterestCalculationBL>();
             services.AddScoped<IReportsBL, ReportsBL>();
-
+            
+            //adding dataaccesslayer
             services.AddScoped<IAccountDL, AccountDL>();
             services.AddScoped<ITransactionDL, TransactionDL>();
             services.AddScoped<IInterestCalculationDL, InterestCalculationDL>();
@@ -52,28 +56,13 @@ namespace IBS.WEBAPI
             //For Identity
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            // .AddDefaultTokenProviders();
 
 
-            services.AddAuthentication(option =>
+            services.AddSwaggerGen(c =>
             {
-                option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-          .AddJwtBearer(options =>
-          {
-              options.SaveToken = true;
-              options.RequireHttpsMetadata = false;
-              options.TokenValidationParameters = new TokenValidationParameters
-              {
-                  ValidateIssuer = true,
-                  ValidateAudience = true,
-                  ValidateIssuerSigningKey = true,
-                  ValidAudience = Configuration["JWT:ValidAudience"],
-                  ValidIssuer = Configuration["JWT:ValidIssuer"],
-                  IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
-              };
-          });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TestAspCore", Version = "v1" });
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -82,8 +71,9 @@ namespace IBS.WEBAPI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TestAspCore v1"));
             }
-
             app.UseRouting();
 
             app.UseAuthentication();

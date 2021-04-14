@@ -4,6 +4,11 @@
     Layout = "~/Views/Admin/_LayoutAdmin.cshtml";
 }
 
-<h1>error</h1>
-@ViewData["error"]
+<br>
+<div class="fail">
+    <h4>OOPS !!! Interest Calculation Failed</h4>
+    <br />
+    <p style="color:darkblue;font-weight:bolder">Please try to fix the error and try again Later</p>
+    @ViewData["error"]
+</div>
 

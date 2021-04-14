@@ -13,9 +13,9 @@ namespace IBS.WEBAPI.Controllers
     [ApiController]
     public class InterestController : ControllerBase
     {
-        private InterestController interestBusinessLayer ;
+        private IInterestCalculationBL interestBusinessLayer ;
 
-        public InterestController(InterestController interestBusinessLayer)
+        public InterestController(IInterestCalculationBL interestBusinessLayer)
         {
            this.interestBusinessLayer = interestBusinessLayer;
         }

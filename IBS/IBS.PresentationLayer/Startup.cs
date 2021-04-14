@@ -1,3 +1,4 @@
+using IBS.EntitiesLayer.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,12 +29,43 @@ namespace IBS.PresentationLayer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+        //    services.AddAuthentication(option =>
+        //    {
+        //        option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        //        option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        //    })
+        //.AddJwtBearer(options =>
+        //{
+        //    options.SaveToken = true;
+        //    options.RequireHttpsMetadata = false;
+        //    options.TokenValidationParameters = new TokenValidationParameters
+        //    {
+        //        ValidateIssuer = true,
+        //        ValidateAudience = true,
+        //        ValidateIssuerSigningKey = true,
+        //        ValidAudience = Configuration["JWT:ValidAudience"],
+        //        ValidIssuer = Configuration["JWT:ValidIssuer"],
+        //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
+        //    };
+        //});
+
+            services.AddDbContext<ApplicationDbContext>(op => op.UseSqlServer(Configuration.GetConnectionString("mycon")));
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+            
+            // to set login page as default page
+         
+            // services.ConfigureApplicationCookie(opts => opts.LoginPath = "/Account/Index");
+
             services.AddMvc();
 
-            //Adding session
-            services.AddSession(options => {
+           
+            services.AddSession(options =>
+            {
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
             });
+
+     
         }
     
 
@@ -50,10 +82,10 @@ namespace IBS.PresentationLayer
             }
 
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseRouting();
-
-            app.UseSession();
+            app.UseAuthentication();
             app.UseAuthorization();
 
 
@@ -61,7 +93,7 @@ namespace IBS.PresentationLayer
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Authentication}/{action=Index}/{id?}");
+                    pattern: "{controller=Account}/{action=Index}/{id?}");
             });
         }
 

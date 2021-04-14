@@ -1,8 +1,12 @@
 ﻿@using Microsoft.AspNetCore.Http
+@{
+    ViewData["Title"] = "Transfer";
+    Layout = "~/Views/Customer/_LayoutCustomer.cshtml";
+}
 
 
 <hr />
-<h4>Transfer Money</h4>
+<h4><i>Transfer Money</i></h4>
 <hr />
 
 <div id="form">
@@ -17,7 +21,7 @@
         </div>
 
         <div class="form-group row">
-            <label for="toacc" class="col-sm-4 offset-md-1 col-form-label">Account Number to be deposited </label>
+            <label for="toacc" class="col-sm-4 offset-md-1 col-form-label">Receipent's Account Number</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control" id="toacc" placeholder="IBSXXXXX" name="toAccountNumber">
                 <p id="error_toaccno" style="color:red;font-style:italic"></p>

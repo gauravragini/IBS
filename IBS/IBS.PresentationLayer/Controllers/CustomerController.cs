@@ -1,5 +1,7 @@
 ﻿using IBS.EntitiesLayer.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
@@ -10,19 +12,29 @@ using System.Threading.Tasks;
 
 namespace IBS.PresentationLayer.Controllers
 {
+
+    [Authorize(Roles = UserRoles.User)]
     public class CustomerController : Controller
     {
-        const string sessionAccountNo = "accountNumber";
 
+        private UserManager<ApplicationUser> userManager;
+
+
+        public CustomerController(UserManager<ApplicationUser> userManager)
+        {
+            this.userManager = userManager;
+        }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+            ViewData["passwordsuccess"] = TempData["passwordsuccess"];
             try
             {
                 using (var client = new HttpClient())
                 {
-                    var userid = HttpContext.Session.GetString("userid");
+                    ApplicationUser user = await userManager.GetUserAsync(HttpContext.User);                   
+                    var userid = user.Id;
                     client.BaseAddress = new Uri("http://localhost:10293/api/Reports");
                     HttpResponseMessage response = await client.GetAsync("Reports/GetAccountbyId/" + userid);
                     var result = response.Content.ReadAsStringAsync().Result;
@@ -30,8 +42,28 @@ namespace IBS.PresentationLayer.Controllers
                     if (response.IsSuccessStatusCode)
                     {
                         Account account = JsonConvert.DeserializeObject<Account>(result);
-                        HttpContext.Session.SetString(sessionAccountNo, account.AccountNumber);
-                        return View(account);
+                        HttpContext.Session.SetString("accountNumber", account.AccountNumber);
+                        HttpContext.Session.SetString("name", user.FirstName+" "+user.LastName);
+
+                        RegisterCustomer customer = new RegisterCustomer();
+                        customer.FirstName = user.FirstName;
+                        customer.LastName = user.LastName;
+                        customer.Dob = user.Dob;
+                        customer.Gender = user.Gender;
+                        customer.FathersName = user.FathersName;
+                        customer.MothersName = user.MothersName;
+                        customer.Address = user.Address;
+                        customer.Pincode = user.Pincode;
+                        customer.PhoneNumber = user.PhoneNumber;
+                        customer.UserName = user.UserName;
+
+                        customer.AccountNumber = account.AccountNumber;
+                        customer.AccountType = account.AccountType;
+                        customer.AvailableBalance = account.AvailableBalance;
+                        customer.InterestAmount = account.InterestAmount;
+                        customer.AccountCreationTime = account.AccountCreationTime;
+                        return View(customer);
+
                     }
 
                     else
@@ -343,8 +375,13 @@ namespace IBS.PresentationLayer.Controllers
                     HttpResponseMessage response = await client.PostAsJsonAsync<UpdatePassword>("Account/UpdatePassword/",model);
                     var result = response.Content.ReadAsStringAsync().Result;
                     Response content = JsonConvert.DeserializeObject<Response>(result);
-                    return Content(content.Message);
-          
+                    if(response.IsSuccessStatusCode)
+                    {
+                        TempData["passwordsuccess"] = content.Message;
+                        return RedirectToAction("Index");
+                    }
+                    ViewData["passworderror"] = content.Message;
+                    return View();
                 }
             }
             catch (Exception e)

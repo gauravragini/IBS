@@ -31,7 +31,7 @@ namespace IBS.BussinessLogicLayer.Implementations
 
                 if (numberofdays < 30)
                 {
-                    throw new InterestException("\n\t\t\tYou can Calculate the Interest after 30 days only \n\t\t\tLast Calculated interest on :" + last + "By Admin Id :" + adminID + "\n Days left : " + numberofdays);
+                    throw new InterestException("\n\t\t\tYou can Calculate the Interest after 30 days only ......... Last Calculated interest on : " + last + ".......By Admin Id : " + adminID + "..... Days left : " + numberofdays);
                 }
                 else
                 {

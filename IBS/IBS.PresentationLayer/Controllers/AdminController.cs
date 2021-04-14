@@ -10,29 +10,34 @@ using IBS.EntitiesLayer;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
 using System.Net.Http.Headers;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
 
 namespace IBS.PresentationLayer.Controllers
 {
-   
-    public class AdminController : Controller
-    {   
-        public IActionResult Index()
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                return Content(HttpContext.Session.GetString("JWToken"));
-            }
-            else
-            {
-                return Content(HttpContext.Session.GetString("JWToken")+ "    Unauthorized");
-            }
-            //if (HttpContext.Session.GetString("JWToken") != null)
-            //    return View();
-            //else
-            //    return Content("Not Authorized");
 
-          //  return View();
+    [Authorize(Roles = UserRoles.Admin)]
+    public class AdminController : Controller
+    {
+
+        private UserManager<ApplicationUser> userManager;
+
+        public AdminController(UserManager<ApplicationUser> userManager)
+        {
+            this.userManager = userManager;
         }
+
+        public async Task<IActionResult> Index()
+        {
+            ViewData["passwordsuccess"] = TempData["passwordsuccess"];
+
+            ApplicationUser user = await userManager.GetUserAsync(HttpContext.User);
+            HttpContext.Session.SetString("userid", user.Id);
+            HttpContext.Session.SetString("username", user.UserName);
+            HttpContext.Session.SetString("name", user.FirstName + " " + user.LastName);
+            return View(user);
+        }
+
 
         //Action method to get the list of newly registered customers
         public async Task<IActionResult> GetNewCustomers()
@@ -42,7 +47,7 @@ namespace IBS.PresentationLayer.Controllers
                 using (var client = new HttpClient())
                 {
                     List<RegisterCustomer> customers = new List<RegisterCustomer>();
-                    client.BaseAddress = new Uri("http://localhost:10293/api/Reports");
+                    client.BaseAddress = new Uri("http://localhost:10293/api/Reports");             
                     HttpResponseMessage response = await client.GetAsync("Reports/GetNewCustomers");
 
                     var result = response.Content.ReadAsStringAsync().Result;
@@ -54,7 +59,8 @@ namespace IBS.PresentationLayer.Controllers
                     }
                     else
                     {
-                        ViewData["error"] = response.Content.ReadAsStringAsync().Result;
+                        var content = JsonConvert.DeserializeObject<Response>(result);
+                        ViewData["error"] = content.Message;
                         return View("error");
                     }
                 }
@@ -87,7 +93,8 @@ namespace IBS.PresentationLayer.Controllers
                     }
                     else
                     {
-                        ViewBag.error = response.Content.ReadAsStringAsync().Result;
+                        var content = JsonConvert.DeserializeObject<Response>(result);
+                        ViewData["error"] = content.Message;
                         return View("error");
                     }
                 }
@@ -121,7 +128,8 @@ namespace IBS.PresentationLayer.Controllers
                     }
                     else
                     {
-                        ViewBag.error = response.Content.ReadAsStringAsync().Result;
+                        var content = JsonConvert.DeserializeObject<Response>(result);
+                        ViewData["error"] = content.Message;
                         return View("error");
                     }
                 }
@@ -154,7 +162,8 @@ namespace IBS.PresentationLayer.Controllers
                     }
                     else
                     {
-                        ViewBag.error = response.Content.ReadAsStringAsync().Result;
+                        var content = JsonConvert.DeserializeObject<Response>(result);
+                        ViewData["error"] = content.Message;
                         return View("error");
                     }
                 }
@@ -182,9 +191,9 @@ namespace IBS.PresentationLayer.Controllers
 
                     var result = response.Content.ReadAsStringAsync().Result;
                     Response content = JsonConvert.DeserializeObject<Response>(result);
-
                     if (response.IsSuccessStatusCode)
                     {
+                        ViewData["message"] = "Customer Approved";
                         return RedirectToAction("GetNewCustomers");
                     }
                     else
@@ -217,7 +226,8 @@ namespace IBS.PresentationLayer.Controllers
                     Response content = JsonConvert.DeserializeObject<Response>(result);
 
                     if (response.IsSuccessStatusCode)
-                    {                       
+                    {
+                        ViewData["message"] = "Customer Rejected";
                         return RedirectToAction("GetNewCustomers");
                     }
                     else
@@ -233,6 +243,48 @@ namespace IBS.PresentationLayer.Controllers
                 return View("~/Views/Shared/ExceptionError.cshtml");
             }
         }
+
+
+        //updates password
+
+        public IActionResult UpdatePassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> UpdatePassword(UpdatePassword model)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    Transaction transaction = new Transaction();
+                    client.BaseAddress = new Uri("http://localhost:10293/api/Account");
+                    HttpResponseMessage response = await client.PostAsJsonAsync<UpdatePassword>("Account/UpdatePassword/", model);
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    Response content = JsonConvert.DeserializeObject<Response>(result);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        TempData["passwordsuccess"] = content.Message;
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        ViewData["passworderror"] = content.Message;
+                        return View();
+                    }
+
+                }
+            }
+            catch (Exception e)
+            {
+                ViewData["error"] = e.Message;
+                return View("~/Views/Shared/ExceptionError.cshtml");
+            }
+        }
+
+    
+
 
     }
 }

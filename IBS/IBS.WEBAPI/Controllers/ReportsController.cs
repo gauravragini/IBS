@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace IBS.WEBAPI.Controllers
 {
 
-    [Authorize]
+   // [Authorize]
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class ReportsController : ControllerBase
@@ -24,24 +24,18 @@ namespace IBS.WEBAPI.Controllers
         }
 
         //web api to get the list of newly registred customers
+
         [HttpGet]
         public IActionResult GetNewCustomers()
         {
-            if(User.Identity.IsAuthenticated)
+            try
+            {
                 return Ok(reportsbussinessLayer.GetNewCustomers());
-            else
+            }
+            catch (Exception e)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "internal server error");
             }
-
-            //try
-            //{
-            //    return Ok(reportsbussinessLayer.GetNewCustomers());
-            //}
-            //catch (Exception e)
-            //{
-            //    return StatusCode(StatusCodes.Status500InternalServerError, "internal server error");
-            //}
         }
 
         //web api to get the list of all the accounts 
