@@ -66,10 +66,28 @@ namespace IBS.PresentationLayer.Controllers
         [HttpPost]
         public async Task<IActionResult> RegisterAdmin(RegisterAdmin model)
         {
+            //checking if user exists or not
             var userExist = await userManager.FindByNameAsync(model.UserName);
             if (userExist != null)
                 TempData["message"] = "User Already Exists";
 
+            //checking age valid
+            int age = 0;
+            age = DateTime.Now.Year - model.Dob.Year;
+            if (DateTime.Now.DayOfYear < model.Dob.DayOfYear)
+                age = age - 1;
+            if (age >= 0 && age < 18)
+            {
+                TempData["message"] = "You Are below 18 years, So Your Account Cannot be created";
+                return RedirectToAction("Index");
+            }
+            else if (age < 0 || age > 100)
+            {
+                TempData["message"] = "You have Entered false Date of birth";
+                return RedirectToAction("Index");
+            }
+
+            //creating user
             ApplicationUser user = new ApplicationUser
             {
                 UserName = model.UserName,
@@ -90,10 +108,10 @@ namespace IBS.PresentationLayer.Controllers
             if (!result.Succeeded)
             {
                 TempData["message"] = $"{result.Errors.ToList()[0].Description}";
-                // return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = $"{result.Errors.ToList()[0].Code}", Message = $"{result.Errors.ToList()[0].Description}" });
             }
             else
             {
+                //adding role
                 if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
                     await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
 
@@ -128,6 +146,22 @@ namespace IBS.PresentationLayer.Controllers
             if (userExist != null)
                 TempData["message"] = "User Already Exists";
 
+            //checking age valid
+            int age = 0;
+            age = DateTime.Now.Year - model.Dob.Year;
+            if (DateTime.Now.DayOfYear < model.Dob.DayOfYear)
+                age = age - 1;
+            if (age >= 0 && age < 18)
+            {
+                TempData["message"] = "You Are below 18 years, So Your Account Cannot be created";
+                return RedirectToAction("Index");
+            }
+            else if (age < 0 || age > 100)
+            {
+                TempData["message"] = "You have Entered false Date of birth";
+                return RedirectToAction("Index");
+            }
+
             ApplicationUser user = new ApplicationUser()
             {
                 UserName = model.UserName,
@@ -148,7 +182,7 @@ namespace IBS.PresentationLayer.Controllers
 
             if (!result.Succeeded)
             {
-                TempData["message"] = "Customer User Creation Failed";
+                TempData["message"] = $"{result.Errors.ToList()[0].Description}";
             }
             else
             {
@@ -191,7 +225,8 @@ namespace IBS.PresentationLayer.Controllers
                     }
                     else
                     {
-                        TempData["message"] = "Customer User Creation Sucessful" + content.Message;
+                        TempData["message"] = "Customer User Creation Failed : " + content.Message;
+                        
                     }
                 }
 
@@ -226,7 +261,9 @@ namespace IBS.PresentationLayer.Controllers
                         else if (appUser.Status == "applied")
                         {
                             TempData["message"] = "Your Application Has not been approved yet by the administrator. Check Again Later";
-                            return RedirectToAction("Index");
+                            await signInManager.SignOutAsync();
+                            HttpContext.Session.Clear();
+                            return RedirectToAction("Index","Account");
                         }
                     }
                 }                

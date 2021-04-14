@@ -71,6 +71,10 @@ namespace IBS.WEBAPI.Controllers
         public async Task<IActionResult> RejectCustomer(string username)
         {
             var user = await userManager.FindByNameAsync(username);
+            Account account = db.Accounts.SingleOrDefault(account => account.Id == user.Id);
+            db.Accounts.Remove(account);
+            db.SaveChanges();
+
             var result = await userManager.DeleteAsync(user);
             if (!result.Succeeded)
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Fail", Message = "Some error occurred" });

@@ -2,85 +2,267 @@
 
 @{
     ViewData["Title"] = "RegisterAdmin";
-    Layout = "~/Views/Authentication/_LayoutHome.cshtml";
+    Layout = "~/Views/Account/_LayoutHome.cshtml";
+
 }
 
-<h1>RegisterAdmin</h1>
 
-<h4>RegisterAdmin</h4>
+<style>
+    h3 {
+        text-align: center;
+    }
+</style>
+<center>
+    <h3>Registration for Admin</h3>
+</center>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="RegisterAdmin">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
+<div id="formadmin" class="row p-3">
+    <br />
+
+    <div class="col-2"></div>
+    <div class="col-md-8">
+        <form id="radmin" class="form align-items-center p-5" action="/Account/RegisterAdmin" method="post" name="RegisterAdmin" onsubmit="return validateForm()">
+
+            <div class="form-group" style="display:flex">
+                <label class="control-label col-3">First Name</label>
+                <div class="col-9">
+                    <input type="text" name="FirstName" class="form-control" placeholder=" Enter First Name" required />
+                    <p class="error" id="nameErr"></p>
+                </div>
+             
             </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            <div class="form-group" style="display:flex">
+                <label class="control-label col-3">Last Name</label>
+                <div class="col-9">
+                    <input name="LastName" type="text" class="form-control" placeholder=" Enter Last Name" required />
+                    <p class="error" id="lnameErr"></p>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
+
+            <div class="form-group" style="display:flex">
+                <label class="control-label col-3"> User Name</label>
+                <div class="col-9">
+                    <input name="UserName" type="email" class="form-control" placeholder=" Enter Email ID(abcd@xyz.com)" required minlength="4" />
+                    <p class="error" id="emailErr"></p>
+                </div>
+                
             </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
+            <div class="form-group" style="display:flex">
+                <label class="control-label col-3"> Phone Number</label>
+                <div class="col-9">
+                    <input name="PhoneNumber" type="text" class="form-control" placeholder=" Enter Phone No(10-Digits)" required maxlength="10" minlength="10" />
+                    <p class="error" id="mobileErr"></p>
+                </div>
+               
             </div>
-            <div class="form-group">
-                <label asp-for="Dob" class="control-label"></label>
-                <input asp-for="Dob" class="form-control" />
-                <span asp-validation-for="Dob" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Gender" class="control-label"></label>
-                <input asp-for="Gender" class="form-control" />
-                <span asp-validation-for="Gender" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FathersName" class="control-label"></label>
-                <input asp-for="FathersName" class="form-control" />
-                <span asp-validation-for="FathersName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MothersName" class="control-label"></label>
-                <input asp-for="MothersName" class="form-control" />
-                <span asp-validation-for="MothersName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Pincode" class="control-label"></label>
-                <input asp-for="Pincode" class="form-control" />
-                <span asp-validation-for="Pincode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+
+                <div class="form-group" style="display:flex">
+                    <label class="control-label col-3">Date Of Birth</label>
+                    <div class="col-9"><input type="date"  name="Dob" class="form-control" required /></div>                  
+                </div>
+
+                <div class="form-group" style="display:flex">
+                    <label class="control-label col-3" required>Gender</label>
+                    <div class="col-9">
+                        <label class="container">
+                            <input type="radio" name="Gender" value="Male"> Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="Gender" value="Female"> Female
+                        </label>
+                        <p class="error" id="genderErr"></p>
+                    </div>           
+                </div>
+
+                <div class="form-group" style="display:flex">
+                    <label class="control-label col-3">Father's Name</label>
+                    <div class="col-9">
+                        <input name="FathersName" type="text" class="form-control" placeholder=" Enter Father's Name" required />
+                        <p class="error" id="fatherErr"></p>
+                    </div>
+                    
+                </div>
+
+                <div class="form-group" style="display:flex">
+                    <label class="control-label col-3">Mother's Name</label>
+                    <div class="col-9">
+                        <input name="MothersName" type="text" class="form-control" placeholder=" Enter Mother's Name" required />
+                        <p class="error" id="motherErr"></p>
+                    </div>
+                    
+                </div>
+                <div class="form-group" style="display:flex">
+                    <label class="control-label col-3">Address</label>
+                    <div class="col-9">
+                        <input name="Address" type="text" n class="form-control" placeholder=" Enter your Address" required />
+                        <p class="error" id="addErr"> </p>
+                    </div>
+                    
+                </div>
+                <div class="form-group" style="display:flex">
+                    <label class="control-label col-3">Pincode</label>
+                    <div class="col-9">
+                        <input name="Pincode" type="number" class="form-control" placeholder=" Enter pincode (6-Digits)" required maxlength="6" minlength="6" />
+                        <p class="error" id="pinErr"></p>
+                    </div>
+                    
+                </div>
+                <div class="form-group" style="display:flex">
+                    <label class="control-label col-3">Password</label>
+                    <div class="col-9">
+                        <input name="Password" type="text" class="form-control" placeholder="Enter Password(AvxV&04Bk)" required />                        
+                        <p class="error" id="passErr"></p>
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="form-group " style="display:flex">
+                    <input type="submit" value="Register" class="btn btn-primary col-5 offset-1" />&nbsp;&nbsp;&nbsp;
+                    <input type="reset" value="Clear" class="btn btn-dark col-5" />
+                </div>
+
+</form>
+    </div>
+    <div class="col-2"></div>
+    <div>
+        <a asp-action="Index" style="font-weight:bolder;color:black">Back to Login Page</a>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
+<script>
+
+function printError(elemId,hintMsg) {
+    document.getElementById(elemId).innerHTML = hintMsg;
+}
+
+//defining a function to validate form
+function validateForm()
+{
+    //retrieving the value of form
+    var fname = document.RegisterAdmin.FirstName.value;
+    var lname = document.RegisterAdmin.LastName.value;
+    var email = document.RegisterAdmin.UserName.value;
+    var mobile = document.RegisterAdmin.PhoneNumber.value;
+    var FatherName = document.RegisterAdmin.FathersName.value;
+    var MotherName = document.RegisterAdmin.MothersName.value;
+    var Addres = document.RegisterAdmin.Address.value;
+    var Pin = document.RegisterAdmin.Pincode.value;
+    var Password = document.RegisterAdmin.Password.value;
+
+    var regex = /^[a-zA-Z\s]+$/;
+
+    //validation for first name
+    if (fname === "") {
+        printError("nameErr", "Please enter your First name");
+        return false;
+    }
+    if (regex.test(fname) === false)
+    {
+        printError("nameErr", "Please enter a valid name");
+        return false;
+    }
+
+    //validation for lastname field
+    //if (lname === "")
+    //{
+    //    printError("lnameErr", "Please enter your last name");
+    //    return false;
+    //}
+    if (regex.test(lname) === false)
+    {
+        printError("lnameErr", "Please enter a valid name");
+        return false;
+    }
+
+    //validation for email
+    if (email == "")
+    {
+        printError("emailErr", "Please enter your email address");
+        return false;
+    }
+
+    var eregex = /^\S+@@\S+\.\S+$/;
+    if (eregex.test(email) === false)
+    {
+        printError("emailErr", "Please enter a valid email address");
+        return false;
+    }
+
+    //validation for mobile number
+    if (mobile == "") {
+        printError("mobileErr", "Please enter your mobile number");
+        return false;
+    }
+
+    var pregex = /^[1-9]\d{9}$/;
+    if (pregex.test(mobile) === false) {
+        printError("mobileErr", "Please enter a valid 10 digit mobile number");
+        return false;
+    }
+
+
+    //validation for gender
+    if (gender == "") {
+        printError("genderErr", "Please select your gender");
+        return false;
+    }
+
+    //validation for Fathername
+    if (FatherName == "") {
+        printError("fatherErr", "Please enter your Father Name");
+        return false;
+    }
+    if (regex.test(FatherName) === false) {
+        printError("fatherErr", "Please enter valid name");
+        return false;
+    }
+
+    //validation for Mothername field
+    if (MotherName == "") {
+        printError("motherErr", "Please enter your Mother Name");
+        return false;
+    }
+
+    if (regex.test(MotherName) === false) {
+        printError("motherErr", "Please enter valid name");
+        return false;
+    }
+
+
+    //validation for Address
+    if (Addres == "") {
+        printError("addErr", "Please enter Address");
+        return false;
+    }
+
+    //validation for Pincode
+    if (Pin == "") {
+        printError("pinErr", "Please enter pincode");
+        return false;
+    }
+
+    if (Pin.length < 6) {
+        printError("pinErr", "Please enter valid 6 digit pincode");
+        return false;
+    }
+
+    var pinregex = /^[0-9]{5}(?:-[0-9]{4})?$/;
+    if (pinregex.test(Pin) === false) {
+        printError("pinErr", "Please enter valid 6 digit pincode");
+        return false;
+    }
+
+  
+
+};
+
+
+</script>
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

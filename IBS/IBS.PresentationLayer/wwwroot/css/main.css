@@ -1,0 +1,111 @@
+﻿#loginrow {
+    background: rgba(188,210,224,1);
+    background: -moz-linear-gradient(left, rgba(188,210,224,1) 0%, rgba(255,255,255,0.99) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(188,210,224,1)), color-stop(100%, rgba(255,255,255,0.99)));
+    background: -webkit-linear-gradient(left, rgba(188,210,224,1) 0%, rgba(255,255,255,0.99) 100%);
+    background: -o-linear-gradient(left, rgba(188,210,224,1) 0%, rgba(255,255,255,0.99) 100%);
+    background: linear-gradient(to right, rgba(188,210,224,1) 0%, rgba(255,255,255,0.99) 100%);
+}
+
+body {
+    background-color: white;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 2px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-sizing: border-box;
+    margin-top: 2px;
+    margin-bottom: 6px;
+    resize: vertical;
+}
+
+#heading {
+    font-family: Georgia;
+    color: darkcyan;
+    font-size: 35px;
+    background: rgba(134,174,204,1);
+    background: -moz-linear-gradient(left, rgba(134,174,204,1) 0%, rgba(250,250,250,1) 37%, rgba(250,250,250,1) 51%, rgba(250,250,250,1) 63%, rgba(134,174,204,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(134,174,204,1)), color-stop(37%, rgba(250,250,250,1)), color-stop(51%, rgba(250,250,250,1)), color-stop(63%, rgba(250,250,250,1)), color-stop(100%, rgba(134,174,204,1)));
+    background: -webkit-linear-gradient(left, rgba(134,174,204,1) 0%, rgba(250,250,250,1) 37%, rgba(250,250,250,1) 51%, rgba(250,250,250,1) 63%, rgba(134,174,204,1) 100%);
+    background: -o-linear-gradient(left, rgba(134,174,204,1) 0%, rgba(250,250,250,1) 37%, rgba(250,250,250,1) 51%, rgba(250,250,250,1) 63%, rgba(134,174,204,1) 100%);
+    background: -ms-linear-gradient(left, rgba(134,174,204,1) 0%, rgba(250,250,250,1) 37%, rgba(250,250,250,1) 51%, rgba(250,250,250,1) 63%, rgba(134,174,204,1) 100%);
+    background: linear-gradient(to right, rgba(134,174,204,1) 0%, rgba(250,250,250,1) 37%, rgba(250,250,250,1) 51%, rgba(250,250,250,1) 63%, rgba(134,174,204,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#86aecc', endColorstr='#86aecc', GradientType=1 );
+    /* border-radius: 11px 11px 11px 11px;
+    -moz-border-radius: 11px 11px 11px 11px;
+    -webkit-border-radius: 11px 11px 11px 11px;
+    border: 1px groove #000000;*/
+}
+
+
+#radmin {
+    background-color: #f0ebe2;
+    -webkit-box-shadow: 0px 0px 7px -1px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 0px 7px -1px rgba(0,0,0,1);
+    box-shadow: 0px 0px 7px -1px rgba(0,0,0,1);
+}
+
+#rcustomer {
+    background-color: #f0ebe2;
+    -webkit-box-shadow: 0px 0px 7px -1px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 0px 7px -1px rgba(0,0,0,1);
+    box-shadow: 0px 0px 7px -1px rgba(0,0,0,1);
+}
+
+#minbalance {
+    background-color: bisque;
+    -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
+    border-radius: 0px 70px 70px 0px;
+    -moz-border-radius: 0px 70px 70px 0px;
+    -webkit-border-radius: 0px 70px 70px 0px;
+    border: 0px solid #000000;
+}
+
+#transferm {
+    background-color: darkseagreen;
+    -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.75);
+    border-radius: 48px 48px 48px 48px;
+    -moz-border-radius: 48px 48px 48px 48px;
+    -webkit-border-radius: 48px 48px 48px 48px;
+    border: 0px solid #000000
+}
+
+#abcontent {
+    background-color: aliceblue;
+    border-radius: 200px 0px 0px 200px;
+    -moz-border-radius: 200px 0px 0px 200px;
+    -webkit-border-radius: 200px 0px 0px 200px;
+    border: 0px solid #000000;
+    padding-left: 7em;
+}
+
+#formadmin {
+    background-image: url("../images/regbackground.png");
+    background-size:cover;
+}
+
+#formcustomer {
+    background-image: url("../images/regbackground.png");
+    background-size: cover;
+}
+
+.contactform {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+    padding: 25px;
+}
+
+.error {
+    color:red;
+   font-style:italic;
+}

@@ -43,6 +43,7 @@ namespace IBS.PresentationLayer.Controllers
                     {
                         Account account = JsonConvert.DeserializeObject<Account>(result);
                         HttpContext.Session.SetString("accountNumber", account.AccountNumber);
+                        HttpContext.Session.SetString("username", user.UserName);
                         HttpContext.Session.SetString("name", user.FirstName+" "+user.LastName);
 
                         RegisterCustomer customer = new RegisterCustomer();
